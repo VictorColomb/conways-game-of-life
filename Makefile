@@ -56,7 +56,8 @@ test-dummy: test-dummy.o
 # put all your applications and tests executables as prerequisite of this rule
 # \ allows to go to the next line
 compile-all: example-main example-string read-file-formatted \
-             read-file-text write-fact test-dummy
+             read-file-text write-fact test-dummy \
+	     app-ex-loader
 
 # add all your test executables in the following variable. You should respect
 # the order given in the project text
@@ -66,5 +67,10 @@ launch-tests: $(ALL_TESTS)
 	for x in $(ALL_TESTS); do ./$$x --all; done
 
 # misc
+WIDTH=1024
+HEIGHT=768
+
 video: out
-	ffmpeg -r 5 -i out/img-%03d.ppm -vcodec libx264 -y -an video.mp4 -vf "pad=ceil(iw/2)*2:ceil(ih/2)*2"
+	mogrify -format png -background white -extent $(WIDTH)X$(HEIGHT) -gravity center out/*.p*m
+	ffmpeg -framerate 5 -i out/img-%03d.png -vcodec libx264 -vf format=yuv420p video.mp4
+	rm -f out/*.png
