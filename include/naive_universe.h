@@ -43,7 +43,7 @@ struct universe
 /**
  * @brief Get a cell from a universe.
  *
- * @param universe
+ * @param uni universe
  * @param row
  * @param column
  *
@@ -51,28 +51,28 @@ struct universe
  *
  * @return *true* if the cell is alive, *false* if it's dead
  */
-bool naive_universe_get_cell(universe universe, int row, int column);
+bool naive_universe_get_cell(universe uni, int row, int column);
 
 /**
  * @brief Create a copy of a universe with a changed cell.
  *
- * @param universe
+ * @param uni universe
  * @param row
  * @param column
  * @param state *true* for alive or *false* for dead
  * @return the same universe except for the given cell
  */
-universe naive_universe_set_cell(universe universe, int row, int column, bool state);
+universe naive_universe_set_cell(universe uni, int row, int column, bool state);
 
 /**
  * @brief Update a given cell from a universe to a given state.
  *
- * @param p_universe pointer to the universe
+ * @param p_uni pointer to the universe
  * @param row
  * @param column
  * @param state *true* for alive, *false* for dead
  */
-void naive_universe_update_cell(universe *p_universe, int row, int column, bool state);
+void naive_universe_update_cell(universe *p_uni, int row, int column, bool state);
 
 
 #endif

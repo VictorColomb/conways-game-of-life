@@ -3,7 +3,8 @@ _OPT = $(if $(OPT),-O3 -flto,)
 CC = gcc
 CFLAGS = -g -std=c99 -Wall $(_OPT) -I./include $(_DEBUG)
 
-.PHONY: clean clean-img doc check-syntax compile-all launch-tests video
+.PHONY: clean clean-all clean-img doc check-syntax all compile-all naive naive-compile-all launch-tests video
+.DEFAULT_GOAL:= all
 
 
 # Generate doxygen documentation
@@ -12,12 +13,15 @@ doc:
 
 # Remove output files and executables
 clean:
-	- rm -f *.o
-	- find . -executable -type f -delete
+	rm -f *.o
+# Remove output files
+clean-all:
+	rm -f *.o
+	find . -executable -type f -delete
 
 # Remove output images and videos
 clean-img:
-	- rm out/*.ppm video.mp4
+	rm out/*.ppm video.mp4
 
 
 # Generic compilation reciepes
@@ -37,21 +41,28 @@ app-naive-loader: naive-app-loader.o naive_universe.o naive_loader.o naive_ppm_w
 	$(CC) $(CFLAGS) -o app-naive-loader naive-app-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
 app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
 	$(CC) $(CFLAGS) -o app-naive-conway app-naive-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
-test-naive-universe: test-naive-universe.o naive-universe.o
+test-naive-universe: test-naive-universe.o naive_universe.o
 	$(CC) $(CFLAGS) -o test-naive-universe test-naive-universe.o naive_universe.o
 
-# Compile all executables
-compile-all: app-naive-loader app-naive-conway
+
+# USER RULES
+all: test-naive-universe clean
+
+compile-all: app-naive-loader app-naive-conway test-naive-universe
+
+naive: app-naive-conway clean
+
+compile-naive-all: app-naive-conway test-naive-universe
 
 
-# add all your test executables in the following variable. You should respect the order given in the project text
-ALL_TESTS = test-dummy
+# TESTS
+ALL_TESTS = test-dummy test-naive-universe
 
 launch-tests: $(ALL_TESTS)
 	for x in $(ALL_TESTS); do ./$$x --all; done
 
 
-# misc
+# VIDEO
 WIDTH=1024
 HEIGHT=768
 
