@@ -2,7 +2,6 @@
  * @file naive_universe.h
  * @author Victor Colomb (vic.col@hotmail.fr)
  * @brief Header file for a naive implementation of Conway's game of life universe structure
- * @version 0.1
  * @date 2021-02-17
  *
  * Naive implementation of the Conway's game of life: \n
@@ -15,14 +14,11 @@
  * - function `naive_universe_get_cell` cell getter
  * - function`naive_universe_set_cell` cell setter, returns a new universe
  * - function `naive_universe_update_cell` cell setter, modifies the given universe
+ * - function `naive_universe_print` to print a universe to the console
  */
-
-#include <stdbool.h>
-
 
 #ifndef CONWAY_NAIVE_UNIVERSE
 #define CONWAY_NAIVE_UNIVERSE
-
 
 typedef struct universe universe;
 
@@ -39,40 +35,51 @@ struct universe
   char *cells;
 };
 
-
 /**
  * @brief Get a cell from a universe.
  *
- * @param uni universe
+ * @param u universe
  * @param row
  * @param column
  *
  * @pre `row` and `column` should be inferior respectively to the height and width of the universe.
  *
- * @return *true* if the cell is alive, *false* if it's dead
+ * @return `.` if the cell is dead and `0` if it is alive
  */
-bool naive_universe_get_cell(universe uni, int row, int column);
+char naive_universe_get_cell(universe u, int row, int column);
 
 /**
  * @brief Create a copy of a universe with a changed cell.
  *
- * @param uni universe
+ * @param u universe
  * @param row
  * @param column
  * @param state *true* for alive or *false* for dead
  * @return the same universe except for the given cell
  */
-universe naive_universe_set_cell(universe uni, int row, int column, bool state);
+universe naive_universe_set_cell(universe u, int row, int column, char state);
 
 /**
  * @brief Update a given cell from a universe to a given state.
  *
- * @param p_uni pointer to the universe
+ * @param p_u pointer to the universe
  * @param row
  * @param column
  * @param state *true* for alive, *false* for dead
  */
-void naive_universe_update_cell(universe *p_uni, int row, int column, bool state);
+void naive_universe_update_cell(universe *p_u, int row, int column, char state);
 
+/**
+ * @brief Print a universe to the console, formatted as follows:
+ *
+ * ```
+ * {width} {height}
+ * {number of steps}
+ * Array of cells, . representing a dead cell and 0 a live one.
+ * ```
+ *
+ * @param u universe
+ */
+void naive_universe_print(universe u);
 
 #endif

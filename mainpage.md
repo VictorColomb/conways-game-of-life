@@ -19,7 +19,7 @@ To also compile test executables, use:
 make compile-all
 ```
 
-## Naive implementation
+## Naive Implementation
 
 [Go to specific page.](@ref naive_implementation)
 

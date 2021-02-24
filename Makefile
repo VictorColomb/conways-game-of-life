@@ -14,6 +14,7 @@ doc:
 # Remove output files and executables
 clean:
 	rm -f *.o
+
 # Remove output files
 clean-all:
 	rm -f *.o
@@ -24,7 +25,7 @@ clean-img:
 	rm out/*.ppm video.mp4
 
 
-# Generic compilation reciepes
+# Generic compilation recipes
 %.o: ./src/%.c
 	$(CC) $(CFLAGS) -o $@ -c $^
 
@@ -33,10 +34,9 @@ clean-img:
 
 
 # Syntax check (put all .o files as prerequisites here)
-check-syntax: naive_universe.o naive_loader.o naive_ppm_writer.o \
-              naive_conway.o app-naive-loader.o app-naive-loader.o
+check-syntax: naive_universe.o test-naive-universe.o
 
-# put all the rules to build your applications and tests here (see examples)
+# Application building rules
 app-naive-loader: naive-app-loader.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
 	$(CC) $(CFLAGS) -o app-naive-loader naive-app-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
 app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
@@ -46,7 +46,7 @@ test-naive-universe: test-naive-universe.o naive_universe.o
 
 
 # USER RULES
-all: test-naive-universe clean
+all: doc test-naive-universe clean
 
 compile-all: app-naive-loader app-naive-conway test-naive-universe
 
@@ -56,7 +56,7 @@ compile-naive-all: app-naive-conway test-naive-universe
 
 
 # TESTS
-ALL_TESTS = test-dummy test-naive-universe
+ALL_TESTS = test-naive-universe
 
 launch-tests: $(ALL_TESTS)
 	for x in $(ALL_TESTS); do ./$$x --all; done
