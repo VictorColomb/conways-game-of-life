@@ -23,7 +23,9 @@
 // Example 3x5 universes
 char CELLS0[] = ".0.....0..000..";
 char CELLS1[] = "...............";
+char *CELLS1_check = "..............."; // immutable copy of CELLS1
 char CELLS2[] = ".......0......."; // 0 at 1,2
+char *CELLS2_check = ".......0.......";
 
 universe u;
 
@@ -48,7 +50,7 @@ void test_print()
 {
   printf("  | testing naive_universe_print...\n");
 
-  naive_universe_print(u);
+  print_naive_universe(u);
 
   printf("  |                                 OK!\n");
 }
@@ -59,8 +61,8 @@ void test_universesetcell()
 
   universe u2 = naive_universe_set_cell(u, 1, 2, '0');
 
-  assert(!strcmp(u.cells, CELLS1));
-  assert(!strcmp(u.cells, CELLS2));
+  assert(!strcmp(u.cells, CELLS1_check));
+  assert(!strcmp(u2.cells, CELLS2_check));
 
   printf(" OK!\n");
 }
@@ -76,7 +78,7 @@ void test_universeupdatecell()
   printf("  | testing naive_universe_update_cell...");
 
   naive_universe_update_cell(&u, 1, 2, '0');
-  assert(!strcmp(u.cells, CELLS2));
+  assert(!strcmp(u.cells, CELLS2_check));
 
   printf(" OK!\n");
 }

@@ -14,7 +14,7 @@
  * - function `naive_universe_get_cell` cell getter
  * - function`naive_universe_set_cell` cell setter, returns a new universe
  * - function `naive_universe_update_cell` cell setter, modifies the given universe
- * - function `naive_universe_print` to print a universe to the console
+ * - function `print_naive_universe` to print a universe to the console
  */
 
 #ifndef CONWAY_NAIVE_UNIVERSE
@@ -80,6 +80,6 @@ void naive_universe_update_cell(universe *p_u, int row, int column, char state);
  *
  * @param u universe
  */
-void naive_universe_print(universe u);
+void print_naive_universe(universe u);
 
 #endif
