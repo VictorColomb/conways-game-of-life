@@ -9,7 +9,7 @@ CFLAGS = -g -std=c99 -Wall $(_OPT) -I./include $(_DEBUG)
 
 # Generate doxygen documentation
 doc:
-	doxygen conf/doxygen.conf
+	doxygen conf/doxygen.conf >/dev/null 2>&1
 
 # Remove output files and executables
 clean:
@@ -38,24 +38,22 @@ clean-img:
 check-syntax: naive_universe.o test-naive-universe.o
 
 # Application building rules
-app-naive-loader: naive-app-loader.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
-	$(CC) $(CFLAGS) -o app-naive-loader naive-app-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
-app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
-	$(CC) $(CFLAGS) -o app-naive-conway app-naive-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
 test-naive-universe: test-naive-universe.o naive_universe.o
 	$(CC) $(CFLAGS) -o test-naive-universe test-naive-universe.o naive_universe.o
 test-naive-loader: test-naive-loader.o naive_universe.o naive_loader.o
 	$(CC) $(CFLAGS) -o test-naive-loader test-naive-loader.o naive_universe.o naive_loader.o
+app-naive-loader: app-naive-loader.o naive_universe.o naive_loader.o
+	$(CC) $(CFLAGS) -o app-naive-loader app-naive-loader.o naive_universe.o naive_loader.o
 
 
 # USER RULES
-all: doc test-naive-universe clean
+all: doc app-naive-loader clean
 
-compile-all: app-naive-loader app-naive-conway test-naive-universe
+compile-all: test-naive-universe test-naive-loader app-naive-loader
 
-naive: app-naive-conway clean
+naive: app-naive-loader clean
 
-compile-naive-all: app-naive-conway test-naive-universe
+compile-naive-all: test-naive-universe test-naive-loader app-naive-loader
 
 
 # TESTS

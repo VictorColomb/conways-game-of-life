@@ -80,7 +80,7 @@ void test_universeupdatecell()
 {
   printf("  | testing naive_universe_update_cell...");
 
-  naive_universe_update_cell(&u, 1, 2, '0');
+  naive_universe_update_cell(u, 1, 2, '0');
   assert(!strcmp(u.cells, CELLS2_check));
 
   printf(" OK!\n");

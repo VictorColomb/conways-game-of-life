@@ -15,6 +15,7 @@
  * - function`naive_universe_set_cell` cell setter, returns a new universe
  * - function `naive_universe_update_cell` cell setter, modifies the given universe
  * - function `print_naive_universe` to print a universe to the console
+ * - function `prettyprint_naive_universe` to pretty-print a universe to the console
  */
 
 #ifndef CONWAY_NAIVE_UNIVERSE
@@ -62,12 +63,12 @@ universe naive_universe_set_cell(universe u, int row, int column, char state);
 /**
  * @brief Update a given cell from a universe to a given state.
  *
- * @param p_u pointer to the universe
+ * @param u universe
  * @param row
  * @param column
  * @param state *true* for alive, *false* for dead
  */
-void naive_universe_update_cell(universe *p_u, int row, int column, char state);
+void naive_universe_update_cell(universe u, int row, int column, char state);
 
 /**
  * @brief Print a universe to the console, formatted as follows:
@@ -81,5 +82,21 @@ void naive_universe_update_cell(universe *p_u, int row, int column, char state);
  * @param u universe
  */
 void print_naive_universe(universe u);
+
+/**
+ * @brief Pretty-prints a universe to the console, formatted as follows:
+ *
+ * ```
+ * Universe width:  {width}
+ * Universe height: {height}
+ * Number of steps: {number of steps}
+ * Universe cells state:
+ * =====================
+ * {universe cells}
+ * ```
+ *
+ * @param u universe
+ */
+void prettyprint_naive_universe(universe u);
 
 #endif
