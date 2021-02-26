@@ -55,6 +55,12 @@ void test_print()
   printf("  |                                 OK!\n");
 }
 
+/**
+ * @brief Test for the `naive_universe_set_cell` function
+ *
+ * - test if the original universe is left unchanged
+ * - test if the new universe has been properly updated
+ */
 void test_universesetcell()
 {
   printf("  | testing naive_universe_set_cell...");
@@ -68,10 +74,7 @@ void test_universesetcell()
 }
 
 /**
- * @brief Test for the `naive_universe_set_cell` function
- *
- * - test if the original universe is left unchanged
- * - test if the new universe has been properly updated
+ * @brief Test for the `naive_universe_update_cell` function
  */
 void test_universeupdatecell()
 {

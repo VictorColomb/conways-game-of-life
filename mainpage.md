@@ -70,6 +70,5 @@ An example for a simple glider follows:
 __Output:__
 
 By default, the program will output PBM images in the `out` folder. \n
-_Warning:_ The `out` folder will be emptied upon execution ! Be sure to empty it beforehand.
 
 The `-p|--print` option will print each step to the console.

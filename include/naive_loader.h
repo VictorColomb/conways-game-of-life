@@ -1,8 +1,7 @@
 /**
  * @file naive_loader.h
  * @author Victor Colomb (vic.col@hotmail.fr)
- * @brief Header file for the naive implementation of Conway's game of life loader
- * @version 0.1
+ * @brief Header file for the naive implementation of Conway's game of life loader.
  * @date 2021-02-22
  *
  * Naive implementation of the Conway's game of life: \n
@@ -18,13 +17,10 @@
  * - function `naive_conway_load` to build a `universe` structure from a text file
  */
 
-#include <stdio.h>
 #include "naive_universe.h"
-
 
 #ifndef CONWAY_NAIVE_LOADER
 #define CONWAY_NAIVE_LOADER
-
 
 /**
  * @brief Parse a text file into a universe structure.
@@ -33,6 +29,5 @@
  * @return the corresponding universe structure
  */
 universe naive_conway_load(char *data_filename);
-
 
 #endif

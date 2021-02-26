@@ -19,6 +19,7 @@ clean:
 clean-all:
 	rm -f *.o
 	find . -executable -type f -delete
+	rm -rf doc
 
 # Remove output images and videos
 clean-img:
@@ -43,6 +44,8 @@ app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_ppm_w
 	$(CC) $(CFLAGS) -o app-naive-conway app-naive-conway.o naive_universe.o naive_loader.o naive_ppm_writer.o naive_conway.o
 test-naive-universe: test-naive-universe.o naive_universe.o
 	$(CC) $(CFLAGS) -o test-naive-universe test-naive-universe.o naive_universe.o
+test-naive-loader: test-naive-loader.o naive_universe.o naive_loader.o
+	$(CC) $(CFLAGS) -o test-naive-loader test-naive-loader.o naive_universe.o naive_loader.o
 
 
 # USER RULES
@@ -56,7 +59,7 @@ compile-naive-all: app-naive-conway test-naive-universe
 
 
 # TESTS
-ALL_TESTS = test-naive-universe
+ALL_TESTS = test-naive-universe test-naive-loader
 
 launch-tests: $(ALL_TESTS)
 	for x in $(ALL_TESTS); do ./$$x --all; done

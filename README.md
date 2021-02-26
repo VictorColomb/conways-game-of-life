@@ -1,21 +1,47 @@
-# Naive Implementation Documentation        {#naive_implementation}
+# Conway's Game of Life Documentation
 
-## Usage
+## Installation
 
+To compile a ready to use solution, use:
+
+```[bash]
+make
 ```
+
+To also compile test executables, use:
+
+```[bash]
+make compile-all
+```
+
+## Naive Implementation
+
+__Installation:__
+
+To compile a ready to use naive solution, use:
+
+```[bash]
+make naive
+```
+
+To also compile test executables, use:
+
+```[bash]
+make naive-compile-all
+```
+
+__Usage:__
+
+```[bash]
 ./app-naive-conway [-p|--print] ./[.../]source_file 
 ```
-
-## Idea
 
 Conway's game of life naive implementation relies on a string of characters, following the convention: `0` for a live cell and `.` for a dead one. \n
 The universe is of fixed size.
 
-## Input
-
 The initial state of the universe of given by a text file following the formatting:
 
-```
+```[txt]
 {width} {height}
 {number of steps}
 The following lines contain the universe, according to the aforementionned convention.
@@ -23,7 +49,7 @@ The following lines contain the universe, according to the aforementionned conve
 
 An example for a simple glider follows:
 
-```
+```[txt]
 6 6
 100
 .0....
@@ -34,15 +60,8 @@ An example for a simple glider follows:
 ......
 ```
 
-## Output
+__Output:__
 
 By default, the program will output PBM images in the `out` folder. \n
 
 The `-p|--print` option will print each step to the console.
-
-## Files
-
-- naive_universe.h and naive_universe.c define the naive universe structure
-- test-naive-universe.c tests the universe structure
-- naive_loader.h and naive_loader.c offer a text file to universe structure loader
-- test-naive-loader.c tests the universe loader
