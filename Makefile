@@ -10,6 +10,7 @@ CFLAGS = -g -std=c99 -Wall $(_OPT) -I./include $(_DEBUG)
 # Generate doxygen documentation
 doc:
 	doxygen conf/doxygen.conf >/dev/null 2>&1
+	rm -f doxygen_documentation.html
 	ln -s doc/html/index.html doxygen_documentation.html
 
 # Remove output files and executables
@@ -42,7 +43,7 @@ clean-img:
 
 
 # Syntax check (put all .o files as prerequisites here)
-check-syntax: naive_universe.o test-naive-universe.o naive_loader.o test-naive-loader.o app-naive-loader.o naive_conway.o test-naive-conway.o
+check-syntax: naive_universe.o test-naive-universe.o naive_loader.o test-naive-loader.o app-naive-loader.o naive_conway.o test-naive-conway.o app-naive-conway.o
 
 # Application building rules
 test-naive-universe: test-naive-universe.o naive_universe.o
@@ -53,16 +54,18 @@ app-naive-loader: app-naive-loader.o naive_universe.o naive_loader.o
 	$(CC) $(CFLAGS) -o $@ app-naive-loader.o naive_universe.o naive_loader.o
 test-naive-conway: test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o
 	$(CC) $(CFLAGS) -o $@ test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o
+app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o
+	$(CC) $(CFLAGS) -o $@ app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o
 
 
 # USER RULES
-all: doc app-naive-loader clean
+all: doc app-naive-loader app-naive-conway clean
 
-compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway
+compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway
 
-naive: app-naive-loader clean
+naive: app-naive-loader app-naive-conway clean
 
-compile-naive-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway
+compile-naive-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway
 
 
 # TESTS
