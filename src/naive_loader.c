@@ -38,6 +38,5 @@ universe naive_conway_load(char *data_filename)
 
   universe u = {width, height, nb_steps, cells};
 
-  free(cells);
   return u;
 }

@@ -10,16 +10,23 @@ CFLAGS = -g -std=c99 -Wall $(_OPT) -I./include $(_DEBUG)
 # Generate doxygen documentation
 doc:
 	doxygen conf/doxygen.conf >/dev/null 2>&1
+	ln -s doc/html/index.html doxygen_documentation.html
 
 # Remove output files and executables
 clean:
 	rm -f *.o
+
+# Remove documentation files
+clean-doc:
+	rm -rf doc
+	rm -f doxygen_documentation.html
 
 # Remove output files
 clean-all:
 	rm -f *.o
 	find . -executable -type f -delete
 	rm -rf doc
+	rm -f doxygen_documentation.html
 
 # Remove output images and videos
 clean-img:
@@ -35,29 +42,31 @@ clean-img:
 
 
 # Syntax check (put all .o files as prerequisites here)
-check-syntax: naive_universe.o test-naive-universe.o
+check-syntax: naive_universe.o test-naive-universe.o naive_loader.o test-naive-loader.o app-naive-loader.o naive_conway.o test-naive-conway.o
 
 # Application building rules
 test-naive-universe: test-naive-universe.o naive_universe.o
-	$(CC) $(CFLAGS) -o test-naive-universe test-naive-universe.o naive_universe.o
+	$(CC) $(CFLAGS) -o $@ test-naive-universe.o naive_universe.o
 test-naive-loader: test-naive-loader.o naive_universe.o naive_loader.o
-	$(CC) $(CFLAGS) -o test-naive-loader test-naive-loader.o naive_universe.o naive_loader.o
+	$(CC) $(CFLAGS) -o $@ test-naive-loader.o naive_universe.o naive_loader.o
 app-naive-loader: app-naive-loader.o naive_universe.o naive_loader.o
-	$(CC) $(CFLAGS) -o app-naive-loader app-naive-loader.o naive_universe.o naive_loader.o
+	$(CC) $(CFLAGS) -o $@ app-naive-loader.o naive_universe.o naive_loader.o
+test-naive-conway: test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o
+	$(CC) $(CFLAGS) -o $@ test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o
 
 
 # USER RULES
 all: doc app-naive-loader clean
 
-compile-all: test-naive-universe test-naive-loader app-naive-loader
+compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway
 
 naive: app-naive-loader clean
 
-compile-naive-all: test-naive-universe test-naive-loader app-naive-loader
+compile-naive-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway
 
 
 # TESTS
-ALL_TESTS = test-naive-universe test-naive-loader
+ALL_TESTS = test-naive-universe test-naive-loader test-naive-conway
 
 launch-tests: $(ALL_TESTS)
 	for x in $(ALL_TESTS); do ./$$x --all; done

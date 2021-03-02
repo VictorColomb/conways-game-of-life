@@ -12,7 +12,6 @@
  * - structure `struct universe` recording height, width, number of steps and cell list of a universe
  * - type `universe` referring to the `struct universe` structure
  * - function `naive_universe_get_cell` cell getter
- * - function`naive_universe_set_cell` cell setter, returns a new universe
  * - function `naive_universe_update_cell` cell setter, modifies the given universe
  * - function `print_naive_universe` to print a universe to the console
  * - function `prettyprint_naive_universe` to pretty-print a universe to the console
@@ -48,17 +47,6 @@ struct universe
  * @return `.` if the cell is dead and `0` if it is alive
  */
 char naive_universe_get_cell(universe u, int row, int column);
-
-/**
- * @brief Create a copy of a universe with a changed cell.
- *
- * @param u universe
- * @param row
- * @param column
- * @param state *true* for alive or *false* for dead
- * @return the same universe except for the given cell
- */
-universe naive_universe_set_cell(universe u, int row, int column, char state);
 
 /**
  * @brief Update a given cell from a universe to a given state.

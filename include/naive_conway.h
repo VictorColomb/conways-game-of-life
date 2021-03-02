@@ -1,7 +1,7 @@
 /**
  * @file naive_conway.h
  * @author Victor Colomb (vic.col@hotmail.fr)
- * @brief Header file for the naive implementation of Conway's game of life stepper
+ * @brief Header file for a naive implementation of Conway's game of life stepper
  * @version 0.1
  * @date 2021-02-22
  *
@@ -20,31 +20,38 @@
 #include <stdbool.h>
 #include "naive_universe.h"
 
-
 #ifndef CONWAY_NAIVE
-#define CONWAT_NAIVE
+#define CONWAY_NAIVE
 
+/**
+ * @brief Count alive neighbors of a cell in a given universe
+ *
+ * @param u universe
+ * @param row
+ * @param column
+ * @return number of alive neighbors of the given cell
+ */
+int naive_count_neighbors(universe u, int row, int column);
 
 /**
  * @brief Get a naive universe's next iteration. \n
  * Decrements the universe's `step_nb` parameter by one.
  *
- * @param universe
+ * @param u universe
  *
  * @return the given universe's next iteration
  */
-universe naive_step(universe universe);
+universe naive_step(universe u);
 
 /**
  * @brief Get the final state of a universe, according to its `step_nb` parameter.
  *
- * @param universe
+ * @param u universe
  * @param print_to_console *true* to print each step to the console
  * @param generate_images *true* to generate images
  *
  * @return the universe's final state
  */
-universe naive_simulation(universe universe, bool print_to_console, bool generate_images);
-
+universe naive_simulation(universe u, bool print_to_console, bool generate_images);
 
 #endif

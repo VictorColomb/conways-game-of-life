@@ -7,7 +7,6 @@
  * Contains the following tests:
  * - test for the `naive_universe_get_cell` function
  * - test for the `naive_universe_print` function
- * - test for the `naive_universe_set_cell` function
  * - test for the `naive_universe_update_cell` function
  *
  * These functions are implemented in the naive_universe.h and naive_universe.c source files.
@@ -30,7 +29,7 @@ char *CELLS2_check = ".......0.......";
 universe u;
 
 /**
- * @brief Test for the `naive_universe_e get_cell` function
+ * @brief Test of the `naive_universe_get_cell` function
  */
 void test_getcell()
 {
@@ -44,7 +43,7 @@ void test_getcell()
 }
 
 /**
- * @brief Test for the `naive_universe_print` function
+ * @brief Test of the `naive_universe_print` function
  */
 void test_print()
 {
@@ -56,25 +55,7 @@ void test_print()
 }
 
 /**
- * @brief Test for the `naive_universe_set_cell` function
- *
- * - test if the original universe is left unchanged
- * - test if the new universe has been properly updated
- */
-void test_universesetcell()
-{
-  printf("  | testing naive_universe_set_cell...");
-
-  universe u2 = naive_universe_set_cell(u, 1, 2, '0');
-
-  assert(!strcmp(u.cells, CELLS1_check));
-  assert(!strcmp(u2.cells, CELLS2_check));
-
-  printf(" OK!\n");
-}
-
-/**
- * @brief Test for the `naive_universe_update_cell` function
+ * @brief Test of the `naive_universe_update_cell` function
  */
 void test_universeupdatecell()
 {
@@ -102,7 +83,6 @@ int main(void)
   u.cells = CELLS1;
   printf(" OK!\n");
 
-  test_universesetcell();
   test_universeupdatecell();
 
   printf("  +-> OK!\n");

@@ -14,16 +14,6 @@ char naive_universe_get_cell(universe u, int row, int column)
   return u.cells[row * u.width + column];
 }
 
-universe naive_universe_set_cell(universe u, int row, int column, char state)
-{
-  char new_cells[u.width * u.height];
-  strcpy(new_cells, u.cells);
-
-  *(new_cells + row * u.width + column) = state;
-  u.cells = new_cells;
-  return u;
-}
-
 void naive_universe_update_cell(universe u, int row, int column, char state)
 {
   u.cells[row * u.width + column] = state;
