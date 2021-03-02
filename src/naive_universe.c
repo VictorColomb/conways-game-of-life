@@ -5,8 +5,6 @@
  * @date 2021-02-23
  */
 
-#include <stdio.h>
-#include <string.h>
 #include "naive_universe.h"
 
 char naive_universe_get_cell(universe u, int row, int column)

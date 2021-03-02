@@ -11,6 +11,8 @@
  * * `-t`: consider the universe as a torus
  */
 
+#include <stdio.h>
+
 #include "naive_universe.h"
 #include "naive_loader.h"
 #include "naive_conway.h"

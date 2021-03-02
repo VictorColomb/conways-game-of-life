@@ -20,6 +20,9 @@
 #ifndef CONWAY_NAIVE_UNIVERSE
 #define CONWAY_NAIVE_UNIVERSE
 
+#include <stdio.h>
+#include <string.h>
+
 typedef struct universe universe;
 
 /**

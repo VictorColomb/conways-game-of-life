@@ -17,7 +17,11 @@
  * - function `naive_simulation` to get a universe's final step and optionally print to console and generate images
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
+
 #include "naive_universe.h"
 
 #ifndef CONWAY_NAIVE

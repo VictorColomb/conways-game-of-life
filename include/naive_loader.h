@@ -17,6 +17,9 @@
  * - function `naive_conway_load` to build a `universe` structure from a text file
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "naive_universe.h"
 
 #ifndef CONWAY_NAIVE_LOADER

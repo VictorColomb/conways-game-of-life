@@ -5,10 +5,6 @@
  * @date 2021-03-01
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "naive_universe.h"
 #include "naive_conway.h"
 
 int naive_count_neighbors(universe u, int row, int column)

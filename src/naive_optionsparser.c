@@ -21,7 +21,7 @@ naive_options naive_default_options()
 
 void print_usage(char *exec_name)
 {
-  fprintf(stderr, "USAGE: %s [-ipt?] filename\nOptions:\n  -i: DON'T generate images for each step\n  -p: print simulation steps to console\n  -t: consider the universe as a torus\n  -?: print source textfile formatting help\n  filename: source textfile to load universe from\n", exec_name);
+  fprintf(stderr, "USAGE: %s [-ipt?] filename\n\nOptions:\n  -i: DON'T generate images for each step\n  -p: print simulation steps to console\n  -t: consider the universe as a torus\n  -?: print source textfile formatting help\n  filename: source textfile to load universe from\n", exec_name);
   exit(EXIT_FAILURE);
 }
 
@@ -70,7 +70,7 @@ naive_options parse_options(int argc, char **argv)
   char *filename = argv[opt_idx];
   if (filename == NULL)
   {
-    printf("[!] Missing filename argument\n");
+    printf("[!] Missing filename argument\n\n");
     print_usage(argv[0]);
   }
   options.filename = filename;
