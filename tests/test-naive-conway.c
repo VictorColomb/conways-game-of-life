@@ -1,7 +1,7 @@
 /**
  * @file test-naive-conway.c
  * @author Victor Colomb
- * @brief Test executable source code for a naive implementation of Conway's game of life universe stepper
+ * @brief Test executable source code for a naive implementation of Conway's game of life universe simulator
  * @date 2021-03-01
  *
  * Contains the following tests:
@@ -26,18 +26,26 @@ char *GLIDER_10STEPS = "........................................................
  *
  * This tests uses the `data/glider.txt` source file and checks 4 neighbors counts, including two with edge positions.
  */
-    void
-    test_count_neighbors()
+void test_count_neighbors()
 {
   printf("  | testing naive_count_neighbors...");
 
-  assert(naive_count_neighbors(u, 2, 2) == 2);
-  assert(naive_count_neighbors(u, 5, 5) == 0);
-  assert(naive_count_neighbors(u, 0, 0) == 1);
-  assert(naive_count_neighbors(u, 20, 19) == 0);
+  assert(naive_count_neighbors(u, 2, 2, false) == 2);
+  assert(naive_count_neighbors(u, 5, 5, false) == 0);
+  assert(naive_count_neighbors(u, 0, 0, false) == 1);
+  assert(naive_count_neighbors(u, 20, 19, false) == 0);
 
-  free(u.cells);
   printf(" OK!\n");
+
+  printf("  | testing naive_count_neighbors with consider_torus true...");
+
+  assert(naive_count_neighbors(u, 2, 2, true) == 2);
+  assert(naive_count_neighbors(u, 2, 19, true) == 1);
+  assert(naive_count_neighbors(u, 20, 1, true) == 1);
+  assert(naive_count_neighbors(u, 0, 0, true) == 2);
+
+  printf(" OK!\n");
+  free(u.cells);
 }
 
 /**
@@ -60,15 +68,7 @@ void test_naive_step()
     sprintf(sol_filename, "./data/archive-test/test-%03d-sol.txt", file_idx);
     universe sol_u = naive_conway_load(sol_filename);
 
-    universe perso_sol_u = naive_step(u);
-
-    if (strcmp(perso_sol_u.cells, sol_u.cells))
-    {
-      printf("Problem with file %d:\n\nPersonal solution:\n==================\n", file_idx);
-      print_naive_universe(perso_sol_u);
-      printf("\nActual solution:\n================\n");
-      print_naive_universe(sol_u);
-    }
+    universe perso_sol_u = naive_step(u, false);
 
     assert(!strcmp(perso_sol_u.cells, sol_u.cells));
 
@@ -90,7 +90,7 @@ void test_naive_simulation()
   printf("  | testing naive_universe function...");
 
   u = naive_conway_load("./data/glider.txt");
-  universe final_u = naive_simulation(u, false, false);
+  universe final_u = naive_simulation(u, false, false, false);
 
   assert(final_u.step_nb == 0);
   assert(!strcmp(final_u.cells, GLIDER_10STEPS));

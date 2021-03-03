@@ -4,7 +4,7 @@
  * @brief Source code for an executable of a naive implementation of Conway's game of life
  * @date 2021-03-02
  *
- * USAGE: `./app-naive-conway [-ip?] filename`
+ * __USAGE__ `./app-naive-conway [-ipt?] filename`
  * * `-?`: print source textfile formatting help
  * * `-p`: print simulation steps to console
  * * `-i`: _don't_ generate images for each step
@@ -17,11 +17,6 @@
 #include "naive_loader.h"
 #include "naive_conway.h"
 #include "naive_optionsparser.h"
-
-bool print_formatting_help = false;
-bool print_to_console = false;
-bool generate_images = true;
-bool consider_torus = false;
 
 int main(int argc, char **argv)
 {

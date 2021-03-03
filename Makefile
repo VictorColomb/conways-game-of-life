@@ -9,7 +9,7 @@ CFLAGS = -g -std=c99 -Wall $(_OPT) -I./include $(_DEBUG)
 
 # Generate doxygen documentation
 doc:
-	doxygen conf/doxygen.conf >/dev/null 2>&1
+	doxygen ./doxygen/Doxyfile >/dev/null 2>&1
 	rm -f doxygen_documentation.html
 	ln -s doc/html/index.html doxygen_documentation.html
 
@@ -65,7 +65,7 @@ compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-nai
 
 naive: app-naive-loader app-naive-conway clean
 
-compile-naive-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway
+naive-compile-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway
 
 
 # TESTS

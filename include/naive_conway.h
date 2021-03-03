@@ -1,7 +1,7 @@
 /**
  * @file naive_conway.h
  * @author Victor Colomb (vic.col@hotmail.fr)
- * @brief Header file for a naive implementation of Conway's game of life stepper
+ * @brief Header file for a naive implementation of Conway's game of life simulation
  * @version 0.1
  * @date 2021-02-22
  *
@@ -28,14 +28,14 @@
 #define CONWAY_NAIVE
 
 /**
- * @brief Count alive neighbors of a cell in a given universe
+ * @brief Count alive neighbors of a cell in a given universe.
  *
  * @param u universe
  * @param row
  * @param column
  * @return number of alive neighbors of the given cell
  */
-int naive_count_neighbors(universe u, int row, int column);
+int naive_count_neighbors(universe u, int row, int column, bool consider_torus);
 
 /**
  * @brief Get a naive universe's next iteration. \n
@@ -45,7 +45,7 @@ int naive_count_neighbors(universe u, int row, int column);
  *
  * @return the given universe's next iteration
  */
-universe naive_step(universe u);
+universe naive_step(universe u, bool consider_torus);
 
 /**
  * @brief Get the final state of a universe, according to its `step_nb` parameter.
@@ -56,6 +56,6 @@ universe naive_step(universe u);
  *
  * @return the universe's final state
  */
-universe naive_simulation(universe u, bool print_to_console, bool generate_images);
+universe naive_simulation(universe u, bool print_to_console, bool generate_images, bool consider_torus);
 
 #endif

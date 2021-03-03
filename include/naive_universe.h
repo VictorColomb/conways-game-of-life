@@ -28,7 +28,7 @@ typedef struct universe universe;
 /**
  * @brief Structure representing a universe: width, height, number of simulation steps and current cells state.
  *
- * Structure represented by the `universe` type.
+ * This structure is represented by the `universe` type.
  */
 struct universe
 {
@@ -62,7 +62,9 @@ char naive_universe_get_cell(universe u, int row, int column);
 void naive_universe_update_cell(universe u, int row, int column, char state);
 
 /**
- * @brief Print a universe to the console, formatted as follows:
+ * @brief Print a universe to the console.
+ *
+ * The universe is formatted as follows:
  *
  * ```
  * {width} {height}
@@ -75,7 +77,9 @@ void naive_universe_update_cell(universe u, int row, int column, char state);
 void print_naive_universe(universe u);
 
 /**
- * @brief Pretty-prints a universe to the console, formatted as follows:
+ * @brief Pretty-prints a universe to the console.
+ *
+ * The universe is formatted as follows:
  *
  * ```
  * Universe width:  {width}
