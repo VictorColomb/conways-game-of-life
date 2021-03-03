@@ -26,5 +26,7 @@ int main(int argc, char **argv)
     do_print_formatting_help();
   }
 
+  naive_simulation(naive_conway_load(options.filename), options.print_to_console, options.generate_images, options.consider_torus);
+
   return 0;
 }

@@ -33,6 +33,8 @@
  * @param u universe
  * @param row
  * @param column
+ * @param consider_torus *true* to consider the universe as a torus
+ *
  * @return number of alive neighbors of the given cell
  */
 int naive_count_neighbors(universe u, int row, int column, bool consider_torus);
@@ -42,6 +44,7 @@ int naive_count_neighbors(universe u, int row, int column, bool consider_torus);
  * Decrements the universe's `step_nb` parameter by one.
  *
  * @param u universe
+ * @param consider_torus *true* to consider the universe as a torus
  *
  * @return the given universe's next iteration
  */
@@ -53,6 +56,7 @@ universe naive_step(universe u, bool consider_torus);
  * @param u universe
  * @param print_to_console *true* to print each step to the console
  * @param generate_images *true* to generate images
+ * @param consider_torus *true* to consider the universe as a torus
  *
  * @return the universe's final state
  */

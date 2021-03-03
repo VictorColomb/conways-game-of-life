@@ -27,7 +27,7 @@ void print_usage(char *exec_name)
 
 void do_print_formatting_help()
 {
-  printf("Source textfiles should be formatted as follows:\n  width height\n  number_of_steps\n  cell structure\n\nIn the cell structure, a dead cell should be represented by . and a live cell by o.\n\nHere is an example for a 3x4 structure:\n3 4\n3\n.o..\n..o.\nooo.\n");
+  printf("Source textfiles should be formatted as follows:\n  width height\n  number_of_steps\n  cell structure\n\nIn the cell structure, a dead cell should be represented by . and a live cell by o.\n\nHere is an example for a 3x4 structure:\n  3 4\n  3\n  .o..\n  ..o.\n  ooo.\n");
   exit(EXIT_SUCCESS);
 }
 
@@ -68,7 +68,7 @@ naive_options parse_options(int argc, char **argv)
 
   // here, argv[opt_idx] points to the first positional argument, which should be the filename
   char *filename = argv[opt_idx];
-  if (filename == NULL)
+  if (filename == NULL && !options.print_formatting_help)
   {
     printf("[!] Missing filename argument\n\n");
     print_usage(argv[0]);

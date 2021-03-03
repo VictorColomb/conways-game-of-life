@@ -13,6 +13,7 @@
  * - type `universe` referring to the `struct universe` structure
  * - function `naive_universe_get_cell` cell getter
  * - function `naive_universe_update_cell` cell setter, modifies the given universe
+ * - function `print_naive_cells` to print a universe's cells state
  * - function `print_naive_universe` to print a universe to the console
  * - function `prettyprint_naive_universe` to pretty-print a universe to the console
  */
@@ -60,6 +61,13 @@ char naive_universe_get_cell(universe u, int row, int column);
  * @param state *true* for alive, *false* for dead
  */
 void naive_universe_update_cell(universe u, int row, int column, char state);
+
+/**
+ * @brief Print a universe's cells state
+ *
+ * @param u universe
+ */
+void print_naive_cells(universe u);
 
 /**
  * @brief Print a universe to the console.

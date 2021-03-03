@@ -29,6 +29,7 @@
  * @brief Parse a text file into a universe structure.
  *
  * @param data_filename source text file filename
+ *
  * @return the corresponding universe structure
  */
 universe naive_conway_load(char *data_filename);

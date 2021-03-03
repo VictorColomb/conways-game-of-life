@@ -85,7 +85,7 @@ universe naive_simulation(universe u, bool print_to_console, bool generate_image
   if (print_to_console)
   {
     printf("Initial state of the universe:\n==============================\n");
-    print_naive_universe(u);
+    print_naive_cells(u);
     printf("\n");
   }
 
@@ -97,7 +97,7 @@ universe naive_simulation(universe u, bool print_to_console, bool generate_image
     if (print_to_console)
     {
       printf("State %2d of the universe:\n=========================\n", ++step_nb);
-      print_naive_universe(u);
+      print_naive_cells(u);
       printf("\n");
     }
   }
@@ -106,7 +106,7 @@ universe naive_simulation(universe u, bool print_to_console, bool generate_image
   if (print_to_console)
   {
     printf("Final state of the universe:\n============================\n");
-    print_naive_universe(u);
+    print_naive_cells(u);
   }
 
   return u;
