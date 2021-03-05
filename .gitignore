@@ -1,7 +1,7 @@
 *.o
 
 docs
-*.html
+doxygen_documentation.html
 
 out
 *.mp4
