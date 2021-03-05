@@ -1,0 +1,7 @@
+*.o
+
+docs
+*.html
+
+out
+*.mp4

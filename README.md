@@ -1,67 +1,81 @@
-# Conway's Game of Life Documentation
+# Conway's Game of Life
+
+Conway's game of life follows the following rules:
+
+* A dead cell will become alive in the next step if it has exactly three alive neighbors
+* An alive cell will become dead in the next step of it has less than one or more than four (both included) alive neighbors
+
+Neighbors are the eight surrounding cells (vertically, horizontally and diagonally).
+
+We provide a naive implementation for the simulation universe using a string to store the universe cells (see detailed information [here](https://viccol961.github.io/IN101_project/naive_implementation.html)).
 
 ## Installation
 
-To compile a ready to use solution, use:
+In the terminal:
 
-```[bash]
-make
+* To compile a user-ready solution, use `make`
+* To compile a user-ready solution of the naive implementation, use `make naive`
+* To compile all executables, including tests, use `make compile-all`
+* To compile all executables of the naive implementation, including tests, use `make naive-compile-all`
+
+## Usage
+
+### Source textfiles
+
+Universes are loaded from text files formatted as follows:
+
+```text
+width height
+number_of_steps
+universe_cells_state
 ```
 
-To also compile test executables, use:
+where universe cells follow the convention `.` for a dead cell and `o` for a live one.
 
-```[bash]
-make compile-all
+Here's an example for a `3x4` universe:
+
+```text
+3 4
+3
+.o..
+..o.
+ooo.
 ```
 
-## Naive Implementation
+### Command-line usage
 
-__Installation:__
+* `app-naive-loader` to load a universe from a source textfile and print it as is to the console.
 
-To compile a ready to use naive solution, use:
+```bash
+./app-naive-loader filename
 
-```[bash]
-make naive
+Options:
+  filename: source textfile (see formatting above)
 ```
 
-To also compile test executables, use:
+* `app-naive-conway` to load a universe from a source textfile and execute the given amount of simulation steps
 
-```[bash]
-make naive-compile-all
+```bash
+./app-naive-conway [-ipt?] filename
+
+Options:
+  -i: generate image output for each step
+  -p: print simulation steps to the console
+  -t: consider the universe as a torus
+  -?: print source textfile formatting help
+  filename: source textfile to load the universe from
 ```
 
-__Usage:__
+## Tests
 
-```[bash]
-./app-naive-conway [-p|--print] ./[.../]source_file 
-```
+We provide a series of tests to verify that all the provided function work properly. \n
+Use `make launch-test` to execute them all.
 
-Conway's game of life naive implementation relies on a string of characters, following the convention: `0` for a live cell and `.` for a dead one. \n
-The universe is of fixed size.
+See detailed information on the related page [here](https://viccol961.github.io/IN101_project/tests.html).
 
-The initial state of the universe of given by a text file following the formatting:
+## Additional features
 
-```[txt]
-{width} {height}
-{number of steps}
-The following lines contain the universe, according to the aforementionned convention.
-```
+See detailed information on the related page [here](https://viccol961.github.io/IN101_project/additional_features.html).
 
-An example for a simple glider follows:
-
-```[txt]
-6 6
-100
-.0....
-..0...
-000...
-......
-......
-......
-```
-
-__Output:__
-
-By default, the program will output PBM images in the `out` folder. \n
-
-The `-p|--print` option will print each step to the console.
+* Options parser for `app-naive-conway`
+* Possibility to consider the universe as a torus

@@ -1,4 +1,10 @@
-# Conway's game of life documentation
+# Conway's Game of Life Documentation
+
+__Author:__ Victor Colomb (vic.col@hotmail.fr)
+
+See source code [here](https://github.com/viccol961/IN101_project).
+
+## General
 
 Conway's game of life follows the following rules:
 
@@ -59,7 +65,7 @@ Options:
 ./app-naive-conway [-ipt?] filename
 
 Options:
-  -i: DON\'T generate images for each steps
+  -i: generate image output for each step
   -p: print simulation steps to the console
   -t: consider the universe as a torus
   -?: print source textfile formatting help

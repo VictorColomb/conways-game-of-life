@@ -12,7 +12,7 @@ naive_options naive_default_options()
   naive_options defaults;
 
   defaults.consider_torus = false;
-  defaults.generate_images = true;
+  defaults.generate_images = false;
   defaults.print_formatting_help = false;
   defaults.print_to_console = false;
 
@@ -21,7 +21,7 @@ naive_options naive_default_options()
 
 void print_usage(char *exec_name)
 {
-  fprintf(stderr, "USAGE: %s [-ipt?] filename\n\nOptions:\n  -i: DON'T generate images for each step\n  -p: print simulation steps to console\n  -t: consider the universe as a torus\n  -?: print source textfile formatting help\n  filename: source textfile to load universe from\n", exec_name);
+  fprintf(stderr, "USAGE: %s [-ipt?] filename\n\nOptions:\n  -i: generate image output for each step\n  -p: print simulation steps to console\n  -t: consider the universe as a torus\n  -?: print source textfile formatting help\n  filename: source textfile to load universe from\n", exec_name);
   exit(EXIT_FAILURE);
 }
 
@@ -52,7 +52,7 @@ naive_options parse_options(int argc, char **argv)
         options.print_to_console = true;
         break;
       case 'i':
-        options.generate_images = false;
+        options.generate_images = true;
         break;
       case 't':
         options.consider_torus = true;

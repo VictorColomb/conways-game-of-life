@@ -18,7 +18,9 @@ int main(int argc, char **argv)
     printf("[!] You did not specify an inuput text file!\n\nUSAGE: ./app-naive-loader source_filename\n    > source_filename: path to a source text file for a universe structure\n");
     exit(EXIT_FAILURE);
   }
+  universe u = naive_conway_load(argv[1]);
+  prettyprint_naive_universe(u);
 
-  prettyprint_naive_universe(naive_conway_load(argv[1]));
+  free(u.cells);
   return 0;
 }

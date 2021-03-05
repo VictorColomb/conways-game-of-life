@@ -82,32 +82,53 @@ universe naive_simulation(universe u, bool print_to_console, bool generate_image
     return u;
   }
 
+  char *cells_copy = malloc((u.width * u.height + 1) * sizeof(char));
+  strcpy(cells_copy, u.cells);
+  u.cells = cells_copy;
+
   if (print_to_console)
   {
     printf("Initial state of the universe:\n==============================\n");
     print_naive_cells(u);
     printf("\n");
   }
+  if (generate_images)
+  {
+    naive_generate_image(u, 0);
+  }
 
   int step_nb = 0;
+  universe new_u;
   while (u.step_nb > 1)
   {
-    u = naive_step(u, consider_torus);
+    new_u = naive_step(u, consider_torus);
+    free(u.cells);
+    u = new_u;
+    ++step_nb;
 
     if (print_to_console)
     {
-      printf("State %2d of the universe:\n=========================\n", ++step_nb);
+      printf("State %2d of the universe:\n=========================\n", step_nb);
       print_naive_cells(u);
       printf("\n");
     }
+    if (generate_images)
+    {
+      naive_generate_image(u, step_nb);
+    }
   }
 
-  u = naive_step(u, consider_torus);
+  new_u = naive_step(u, consider_torus);
+  free(u.cells);
   if (print_to_console)
   {
     printf("Final state of the universe:\n============================\n");
-    print_naive_cells(u);
+    print_naive_cells(new_u);
+  }
+  if (generate_images)
+  {
+    naive_generate_image(new_u, ++step_nb);
   }
 
-  return u;
+  return new_u;
 }

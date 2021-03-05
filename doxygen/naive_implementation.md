@@ -29,7 +29,7 @@ Options:
 ./app-naive-conway [-ipt?] filename
 
 Options:
-  -i: DON\'T generate images for each steps
+  -i: generate image output for each step
   -p: print simulation steps to the console
   -t: consider the universe as a torus
   -?: print source textfile formatting help

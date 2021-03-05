@@ -1,7 +1,7 @@
 /**
  * @file naive_ppm_writer.h
  * @author Victor Colomb (vic.col@hotmail.fr)
- * @brief Header file for the naive implementation of Conway's game of life ppm image printer
+ * @brief Header file for a naive implementation of Conway's game of life ppm image printer
  * @version 0.1
  * @date 2021-02-22
  *
@@ -15,6 +15,8 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "naive_universe.h"
 
 
@@ -24,21 +26,21 @@
 
 /**
  * @brief Generate the image corresponding to a universe. \n
- * Image will be of PPM format and created in the `out` folder, with the filename `num.ppm`
+ * Image will be of PPM format and created in the `out` folder, with the filename `idx-XXX.ppm` where XXX in the the image index.
  *
- * @param universe
- * @param num image number, for its filename
+ * @param u universe
+ * @param idx image index, used for its filename
  */
-void naive_generate_image(universe universe, int num);
+void naive_generate_image(universe u, int idx);
 
 /**
  * @brief Generate the image corresponding to a universe. \n
  * Image will be of PPM format.
  *
- * @param universe
+ * @param u universe
  * @param filename
  */
-void naive_generate_image_filename(universe universe, char *filename);
+void naive_generate_image_filename(universe u, char *filename);
 
 
 #endif

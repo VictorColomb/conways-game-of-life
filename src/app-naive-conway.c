@@ -7,7 +7,7 @@
  * __USAGE__ `./app-naive-conway [-ipt?] filename`
  * * `-?`: print source textfile formatting help
  * * `-p`: print simulation steps to console
- * * `-i`: _don't_ generate images for each step
+ * * `-i`:  generate image output for each steps
  * * `-t`: consider the universe as a torus
  */
 
@@ -26,7 +26,25 @@ int main(int argc, char **argv)
     do_print_formatting_help();
   }
 
-  naive_simulation(naive_conway_load(options.filename), options.print_to_console, options.generate_images, options.consider_torus);
+  universe u = naive_conway_load(options.filename);
+
+  if (options.generate_images && u.step_nb > 1000)
+  {
+    free(u.cells);
+    fprintf(stderr, "[!] Cannot generate image output for more than 1000 steps.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  universe final_u = naive_simulation(u, options.print_to_console, options.generate_images, options.consider_torus);
+
+  if (!(options.print_to_console || options.generate_images))
+  {
+    printf("You did not request any output, here's at least the final state of the universe:\n\n");
+    print_naive_cells(final_u);
+  }
+
+  free(u.cells);
+  free(final_u.cells);
 
   return 0;
 }
