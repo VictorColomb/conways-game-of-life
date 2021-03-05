@@ -1,0 +1,9 @@
+code {
+	display: inline-block;
+	background-color: #fbfcfd;
+	border: 1px solid #c4cfe5;
+
+	font-size: 13px;
+	min-height: 13px;
+	line-height: 1.0;
+}
