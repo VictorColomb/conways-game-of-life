@@ -52,12 +52,12 @@ test-naive-loader: test-naive-loader.o naive_universe.o naive_loader.o
 	$(CC) $(CFLAGS) -o $@ test-naive-loader.o naive_universe.o naive_loader.o
 app-naive-loader: app-naive-loader.o naive_universe.o naive_loader.o
 	$(CC) $(CFLAGS) -o $@ app-naive-loader.o naive_universe.o naive_loader.o
-test-naive-conway: test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_ppm_writer.o
-	$(CC) $(CFLAGS) -o $@ test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_ppm_writer.o
-app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o naive_ppm_writer.o
-	$(CC) $(CFLAGS) -o $@ app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o naive_ppm_writer.o
-test-naive-generate-image: test-naive-generate-image.o naive_universe.o naive_loader.o naive_ppm_writer.o
-	$(CC) $(CFLAGS) -o $@ test-naive-generate-image.o naive_universe.o naive_loader.o naive_ppm_writer.o
+test-naive-conway: test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_pbm_writer.o
+	$(CC) $(CFLAGS) -o $@ test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_pbm_writer.o
+app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o naive_pbm_writer.o
+	$(CC) $(CFLAGS) -o $@ app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o naive_pbm_writer.o
+test-naive-generate-image: test-naive-generate-image.o naive_universe.o naive_loader.o naive_pbm_writer.o
+	$(CC) $(CFLAGS) -o $@ test-naive-generate-image.o naive_universe.o naive_loader.o naive_pbm_writer.o
 
 
 # USER RULES
