@@ -1,7 +1,0 @@
-<map id="include/naive_ppm_writer.h" name="include/naive_ppm_writer.h">
-<area shape="rect" id="node2" href="$naive__conway_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life simulation. " alt="" coords="178,80,339,107"/>
-<area shape="rect" id="node6" href="$naive__ppm__writer_8c.html" title="Source code for a naive implementation of Conway&#39;s game of life. " alt="" coords="364,80,521,107"/>
-<area shape="rect" id="node3" href="$app-naive-conway_8c.html" title="Source code for an executable of a naive implementation of Conway&#39;s game of life. ..." alt="" coords="5,155,165,181"/>
-<area shape="rect" id="node4" href="$naive__conway_8c.html" title="Source file for a naive implementation of Conway&#39;s game of life simulator. " alt="" coords="189,155,328,181"/>
-<area shape="rect" id="node5" href="$test-naive-conway_8c.html" title="Test executable source code for a naive implementation of Conway&#39;s game of life universe simulator..." alt="" coords="353,155,525,181"/>
-</map>

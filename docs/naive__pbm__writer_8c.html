@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IN101 project on Conway&#39;s Game of Life: src/naive_ppm_writer.c File Reference</title>
+<title>IN101 project on Conway&#39;s Game of Life: src/naive_pbm_writer.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,46 +66,85 @@ $(function() {
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">naive_ppm_writer.c File Reference</div>  </div>
+<div class="title">naive_pbm_writer.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Source code for a naive implementation of Conway's game of life.  
+<p>Source code for a naive implementation of Conway's game of life ppm image printer.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="naive__ppm__writer_8h_source.html">naive_ppm_writer.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="naive__pbm__writer_8h_source.html">naive_pbm_writer.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for naive_ppm_writer.c:</div>
+Include dependency graph for naive_pbm_writer.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="naive__ppm__writer_8c__incl.png" border="0" usemap="#src_2naive__ppm__writer_8c" alt=""/></div>
-<map name="src_2naive__ppm__writer_8c" id="src_2naive__ppm__writer_8c">
-<area shape="rect" id="node2" href="naive__ppm__writer_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life ppm image printer. " alt="" coords="44,80,179,107"/>
+<div class="center"><img src="naive__pbm__writer_8c__incl.png" border="0" usemap="#src_2naive__pbm__writer_8c" alt=""/></div>
+<map name="src_2naive__pbm__writer_8c" id="src_2naive__pbm__writer_8c">
+<area shape="rect" id="node2" href="naive__pbm__writer_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life ppm image printer. " alt="" coords="44,80,179,107"/>
 <area shape="rect" id="node6" href="naive__universe_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life universe structure. " alt="" coords="110,155,230,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3ca64d513c32b3bedd174536bd04baa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="naive__ppm__writer_8c.html#a3ca64d513c32b3bedd174536bd04baa2">naive_generate_image_simulation</a> (<a class="el" href="structuniverse.html">universe</a> u, int idx)</td></tr>
-<tr class="memdesc:a3ca64d513c32b3bedd174536bd04baa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the image corresponding to the universe to out/XXX.pgm.  <a href="#a3ca64d513c32b3bedd174536bd04baa2">More...</a><br /></td></tr>
-<tr class="separator:a3ca64d513c32b3bedd174536bd04baa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af675ae19b78d48e209464a2281e41186"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="naive__ppm__writer_8c.html#af675ae19b78d48e209464a2281e41186">naive_generate_image</a> (<a class="el" href="structuniverse.html">universe</a> u, char *filename)</td></tr>
-<tr class="memdesc:af675ae19b78d48e209464a2281e41186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the image corresponding to a universe. <br />
-Image will be of PPM format.  <a href="#af675ae19b78d48e209464a2281e41186">More...</a><br /></td></tr>
-<tr class="separator:af675ae19b78d48e209464a2281e41186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fa905b7eb56927a631f0fd09fa6aae4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="naive__pbm__writer_8c.html#a2fa905b7eb56927a631f0fd09fa6aae4">naive_generate_image</a> (<a class="el" href="structuniverse.html">universe</a> u, int idx)</td></tr>
+<tr class="memdesc:a2fa905b7eb56927a631f0fd09fa6aae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the image corresponding to a universe. <br />
+Image will be of PPM format and created in the <code>out</code> folder, with the filename <code>idx-XXX.ppm</code> where XXX in the the image index.  <a href="#a2fa905b7eb56927a631f0fd09fa6aae4">More...</a><br /></td></tr>
+<tr class="separator:a2fa905b7eb56927a631f0fd09fa6aae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7cd1524427073b9bd66157291436375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="naive__pbm__writer_8c.html#ab7cd1524427073b9bd66157291436375">naive_generate_image_filename</a> (<a class="el" href="structuniverse.html">universe</a> u, char *filename)</td></tr>
+<tr class="memdesc:ab7cd1524427073b9bd66157291436375"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the image corresponding to a universe. <br />
+Image will be of PPM format.  <a href="#ab7cd1524427073b9bd66157291436375">More...</a><br /></td></tr>
+<tr class="separator:ab7cd1524427073b9bd66157291436375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Source code for a naive implementation of Conway's game of life. </p>
+<div class="textblock"><p>Source code for a naive implementation of Conway's game of life ppm image printer. </p>
 <dl class="section author"><dt>Author</dt><dd>Victor Colomb (<a href="#" onclick="location.href='mai'+'lto:'+'vic'+'.c'+'ol@'+'ho'+'tma'+'il'+'.fr'; return false;">vic.c<span style="display: none;">.nosp@m.</span>ol@h<span style="display: none;">.nosp@m.</span>otmai<span style="display: none;">.nosp@m.</span>l.fr</a>) </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2021-03-04 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2021-03-05 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="af675ae19b78d48e209464a2281e41186"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af675ae19b78d48e209464a2281e41186">&#9670;&nbsp;</a></span>naive_generate_image()</h2>
+<a id="a2fa905b7eb56927a631f0fd09fa6aae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fa905b7eb56927a631f0fd09fa6aae4">&#9670;&nbsp;</a></span>naive_generate_image()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void naive_generate_image </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structuniverse.html">universe</a>&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate the image corresponding to a universe. <br />
+Image will be of PPM format and created in the <code>out</code> folder, with the filename <code>idx-XXX.ppm</code> where XXX in the the image index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>universe </td></tr>
+    <tr><td class="paramname">idx</td><td>image index, used for its filename </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab7cd1524427073b9bd66157291436375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7cd1524427073b9bd66157291436375">&#9670;&nbsp;</a></span>naive_generate_image_filename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void naive_generate_image_filename </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structuniverse.html">universe</a>&#160;</td>
           <td class="paramname"><em>u</em>, </td>
@@ -128,45 +167,8 @@ Image will be of PPM format.  <a href="#af675ae19b78d48e209464a2281e41186">More.
 Image will be of PPM format. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">universe</td><td></td></tr>
-    <tr><td class="paramname">filename</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a3ca64d513c32b3bedd174536bd04baa2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ca64d513c32b3bedd174536bd04baa2">&#9670;&nbsp;</a></span>naive_generate_image_simulation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void naive_generate_image_simulation </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structuniverse.html">universe</a>&#160;</td>
-          <td class="paramname"><em>u</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>idx</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate the image corresponding to the universe to out/XXX.pgm. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
     <tr><td class="paramname">u</td><td>universe </td></tr>
-    <tr><td class="paramname">idx</td><td>index of the image to be used in the output filename </td></tr>
+    <tr><td class="paramname">filename</td><td></td></tr>
   </table>
   </dd>
 </dl>

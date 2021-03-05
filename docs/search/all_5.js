@@ -1,6 +1,7 @@
 var searchData=
 [
   ['test_2dnaive_2dconway_2ec',['test-naive-conway.c',['../test-naive-conway_8c.html',1,'']]],
+  ['test_2dnaive_2dgenerate_2dimage_2ec',['test-naive-generate-image.c',['../test-naive-generate-image_8c.html',1,'']]],
   ['test_2dnaive_2dloader_2ec',['test-naive-loader.c',['../test-naive-loader_8c.html',1,'']]],
   ['test_2dnaive_2duniverse_2ec',['test-naive-universe.c',['../test-naive-universe_8c.html',1,'']]],
   ['test_5fcount_5fneighbors',['test_count_neighbors',['../test-naive-conway_8c.html#a56638191db3e05707b160a8ca8d12aa9',1,'test-naive-conway.c']]],

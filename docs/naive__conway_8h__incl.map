@@ -1,4 +1,4 @@
 <map id="include/naive_conway.h" name="include/naive_conway.h">
 <area shape="rect" id="node6" href="$naive__universe_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life universe structure. " alt="" coords="21,155,141,181"/>
-<area shape="rect" id="node7" href="$naive__ppm__writer_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life ppm image printer. " alt="" coords="126,80,260,107"/>
+<area shape="rect" id="node7" href="$naive__pbm__writer_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life ppm image printer. " alt="" coords="126,80,260,107"/>
 </map>

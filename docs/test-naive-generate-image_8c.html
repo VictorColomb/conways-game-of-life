@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IN101 project on Conway&#39;s Game of Life: src/app-naive-conway.c File Reference</title>
+<title>IN101 project on Conway&#39;s Game of Life: tests/test-naive-generate-image.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,53 +59,46 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_59425e443f801f1f2fd8bbe4959a3ccf.html">tests</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">app-naive-conway.c File Reference</div>  </div>
+<div class="title">test-naive-generate-image.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Source code for an executable of a naive implementation of Conway's game of life.  
+<p>Test executble source code for a naive implementation of Conway's game of life image printer.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="naive__universe_8h_source.html">naive_universe.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="naive__loader_8h_source.html">naive_loader.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="naive__conway_8h_source.html">naive_conway.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="naive__optionsparser_8h_source.html">naive_optionsparser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="naive__pbm__writer_8h_source.html">naive_pbm_writer.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
-Include dependency graph for app-naive-conway.c:</div>
+Include dependency graph for test-naive-generate-image.c:</div>
 <div class="dyncontent">
-<div class="center"><img src="app-naive-conway_8c__incl.png" border="0" usemap="#src_2app-naive-conway_8c" alt=""/></div>
-<map name="src_2app-naive-conway_8c" id="src_2app-naive-conway_8c">
-<area shape="rect" id="node3" href="naive__universe_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life universe structure. " alt="" coords="495,229,615,256"/>
-<area shape="rect" id="node5" href="naive__loader_8h.html" title="Header file for the naive implementation of Conway&#39;s game of life loader. " alt="" coords="30,155,137,181"/>
-<area shape="rect" id="node7" href="naive__conway_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life simulation. " alt="" coords="316,80,432,107"/>
-<area shape="rect" id="node10" href="naive__optionsparser_8h.html" title="Header file for an option parser for a naive implementation of Conway&#39;s game of life. " alt="" coords="121,80,270,107"/>
-<area shape="rect" id="node9" href="naive__pbm__writer_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life ppm image printer. " alt="" coords="412,155,547,181"/>
+<div class="center"><img src="test-naive-generate-image_8c__incl.png" border="0" usemap="#tests_2test-naive-generate-image_8c" alt=""/></div>
+<map name="tests_2test-naive-generate-image_8c" id="tests_2test-naive-generate-image_8c">
+<area shape="rect" id="node4" href="naive__universe_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life universe structure. " alt="" coords="185,169,305,196"/>
+<area shape="rect" id="node6" href="naive__loader_8h.html" title="Header file for the naive implementation of Conway&#39;s game of life loader. " alt="" coords="35,95,142,121"/>
+<area shape="rect" id="node7" href="naive__pbm__writer_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life ppm image printer. " alt="" coords="167,95,301,121"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top"><a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (int argc, char **argv)</td></tr>
-<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top"><a id="a840291bc02cba5474a4cb46a9b9566fe"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (void)</td></tr>
+<tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Source code for an executable of a naive implementation of Conway's game of life. </p>
+<div class="textblock"><p>Test executble source code for a naive implementation of Conway's game of life image printer. </p>
 <dl class="section author"><dt>Author</dt><dd>Victor Colomb (<a href="#" onclick="location.href='mai'+'lto:'+'vic'+'.c'+'ol@'+'ho'+'tma'+'il'+'.fr'; return false;">vic.c<span style="display: none;">.nosp@m.</span>ol@h<span style="display: none;">.nosp@m.</span>otmai<span style="display: none;">.nosp@m.</span>l.fr</a>) </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2021-03-02</dd></dl>
-<p><b>USAGE</b> <code>./app-naive-conway [-ipt?] filename</code></p><ul>
-<li><code>-?</code>: print source textfile formatting help</li>
-<li><code>-p</code>: print simulation steps to console</li>
-<li><code>-i</code>: generate image output for each steps</li>
-<li><code>-t</code>: consider the universe as a torus </li>
-</ul>
+<dl class="section date"><dt>Date</dt><dd>2021-03-05</dd></dl>
+<p>This test will load <code>data/glider.txt</code> and attemp to print the pgm image corresponding to the </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

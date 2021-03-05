@@ -1,0 +1,8 @@
+<map id="include/naive_pbm_writer.h" name="include/naive_pbm_writer.h">
+<area shape="rect" id="node2" href="$naive__conway_8h.html" title="Header file for a naive implementation of Conway&#39;s game of life simulation. " alt="" coords="178,87,339,114"/>
+<area shape="rect" id="node6" href="$naive__pbm__writer_8c.html" title="Source code for a naive implementation of Conway&#39;s game of life ppm image printer. " alt="" coords="364,87,521,114"/>
+<area shape="rect" id="node7" href="$test-naive-generate-image_8c.html" title="Test executble source code for a naive implementation of Conway&#39;s game of life image printer..." alt="" coords="546,80,713,121"/>
+<area shape="rect" id="node3" href="$app-naive-conway_8c.html" title="Source code for an executable of a naive implementation of Conway&#39;s game of life. ..." alt="" coords="5,169,165,196"/>
+<area shape="rect" id="node4" href="$naive__conway_8c.html" title="Source file for a naive implementation of Conway&#39;s game of life simulator. " alt="" coords="189,169,328,196"/>
+<area shape="rect" id="node5" href="$test-naive-conway_8c.html" title="Test executable source code for a naive implementation of Conway&#39;s game of life universe simulator..." alt="" coords="353,169,525,196"/>
+</map>
