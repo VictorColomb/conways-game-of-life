@@ -85,3 +85,4 @@ See detailed information on the related page [here](@ref additional_features).
 
 * Options parser for `app-naive-conway`
 * Possibility to consider the universe as a torus
+* Decided to use PBM standard for the output images instead of the PPM standard.

@@ -1,5 +1,5 @@
 /**
- * @file naive_ppm_writer.h
+ * @file naive_pbm_writer.h
  * @author Victor Colomb (vic.col@hotmail.fr)
  * @brief Header file for a naive implementation of Conway's game of life ppm image printer
  * @version 0.1

@@ -1,11 +1,11 @@
 /**
- * @file naive_ppm_writer.c
+ * @file naive_pbm_writer.c
  * @author Victor Colomb (vic.col@hotmail.fr)
  * @brief Source code for a naive implementation of Conway's game of life ppm image printer
  * @date 2021-03-05
  */
 
-#include "naive_ppm_writer.h"
+#include "naive_pbm_writer.h"
 
 void naive_generate_image(universe u, int idx)
 {

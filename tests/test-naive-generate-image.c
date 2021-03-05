@@ -3,6 +3,8 @@
  * @author Victor Colomb (vic.col@hotmail.fr)
  * @brief Test executble source code for a naive implementation of Conway's game of life image printer
  * @date 2021-03-05
+ *
+ * This test will load `data/glider.txt` and attemp to print the pgm image corresponding to the 
  */
 
 #include <stdio.h>
@@ -10,7 +12,7 @@
 
 #include "naive_universe.h"
 #include "naive_loader.h"
-#include "naive_ppm_writer.h"
+#include "naive_pbm_writer.h"
 
 int main(void)
 {

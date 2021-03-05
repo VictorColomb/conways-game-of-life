@@ -23,7 +23,7 @@
 #include <stdbool.h>
 
 #include "naive_universe.h"
-#include "naive_ppm_writer.h"
+#include "naive_pbm_writer.h"
 
 #ifndef CONWAY_NAIVE
 #define CONWAY_NAIVE

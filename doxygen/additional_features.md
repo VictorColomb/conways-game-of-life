@@ -21,7 +21,7 @@ This means that the option sets `-pt` and `-t -p` are equivalent.
 
 The first positional argument (the first argument withtout a leading dash) will be considered as the `filename` argument.
 
-### Possibility to consider the universe as a torus
+## Possibility to consider the universe as a torus
 
 The `-t` option in `app-naive-conway` makes the simulator consider the universe as a torus, meaning that the alive neighbor count for an edging cell will include alive cells on the opposite edge of the universe.
 
@@ -34,3 +34,21 @@ x..     x..     x.o     x..
 ...     ..o     ...     ...
 ..o     ...     ...     o..
 ```
+
+## Usage of the PBM ASCII image standard
+
+Whilst the project guidelines call for creating output images for simulation steps using the PPM standard (magic number `P3`), I decided to use the PBM standard (magic number `P1`), featuring only black and white pixels.
+
+A PGM image source code is as follows, with an example alongside (image of the letter J):
+
+```text
+P1                           P1
+width height                 7 5
+pixels                       0000010
+                             0000010
+                             0000010
+                             0100010
+                             0011100
+```
+
+Since we only intend to print black and white pixels, the PBM standard is the minimum necessary and the produced images will be of smaller size.

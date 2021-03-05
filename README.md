@@ -77,5 +77,6 @@ See detailed information on the related page [here](https://viccol961.github.io/
 
 See detailed information on the related page [here](https://viccol961.github.io/IN101_project/additional_features.html).
 
-* Options parser for `app-naive-conway`
-* Possibility to consider the universe as a torus
+* Options parser for `app-naive-conway`.
+* Possibility to consider the universe as a torus.
+* Decided to use PBM standard for the output images instead of the PPM standard.
