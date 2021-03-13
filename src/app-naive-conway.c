@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
   if (!(options.print_to_console || options.generate_images))
   {
-    printf("You did not request any output, here's at least the final state of the universe:\n\n");
+    printf("You did not request any output, here's at least the final state of the universe:\n");
     print_naive_cells(final_u);
   }
 

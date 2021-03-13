@@ -4,7 +4,7 @@
  * @brief Test executble source code for a naive implementation of Conway's game of life image printer
  * @date 2021-03-05
  *
- * This test will load `data/glider.txt` and attemp to print the pgm image corresponding to the 
+ * This test will load `data/glider.txt` and attemp to print the pgm image corresponding to the loaded universe
  */
 
 #include <stdio.h>

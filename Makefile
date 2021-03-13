@@ -3,7 +3,7 @@ _OPT = $(if $(OPT),-O3 -flto,)
 CC = gcc
 CFLAGS = -g -std=c99 -Wall $(_OPT) -I./include $(_DEBUG)
 
-.PHONY: clean clean-all clean-img doc check-syntax all compile-all naive naive-compile-all launch-tests video
+.PHONY: clean clean-all clean-img doc check-syntax all compile-all naive naive-compile-all launch-tests video enlarge-image run-% valgrind-%
 .DEFAULT_GOAL:= all
 
 
@@ -58,20 +58,31 @@ app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_conwa
 	$(CC) $(CFLAGS) -o $@ app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o naive_pbm_writer.o
 test-naive-generate-image: test-naive-generate-image.o naive_universe.o naive_loader.o naive_pbm_writer.o
 	$(CC) $(CFLAGS) -o $@ test-naive-generate-image.o naive_universe.o naive_loader.o naive_pbm_writer.o
+test-list-universe: test-list-universe.o linked_list_cell.o list_universe.o
+	$(CC) $(CFLAGS) -o $@ test-list-universe.o linked_list_cell.o list_universe.o
+
+# Build and run
+run-%: %
+	./$* $(ARGS)
+
+valgrind-%: %
+	valgrind --leak-check=full ./$* $(ARGS)
 
 
 # USER RULES
 all: doc app-naive-loader app-naive-conway clean
 
-compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image
+compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image test-list-universe
 
 naive: app-naive-loader app-naive-conway clean
 
 naive-compile-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image
 
+linkedlist-compile-all: test-list-universe
+
 
 # TESTS
-ALL_TESTS = test-naive-universe test-naive-loader test-naive-conway test-naive-generate-image
+ALL_TESTS = test-naive-universe test-naive-loader test-naive-conway test-naive-generate-image test-list-universe
 
 launch-tests: $(ALL_TESTS)
 	for x in $(ALL_TESTS); do ./$$x --all; done
@@ -81,7 +92,9 @@ launch-tests: $(ALL_TESTS)
 WIDTH=1024
 HEIGHT=768
 
-video: out
-	mogrify -format png -background white -scale $(WIDTH)X$(HEIGHT) -gravity center out/*.p*m
+enlarge-image: out
+	mogrify -format png -background white -scale $(WIDTH)X$(HEIGHT)\! -gravity center out/*.p*m
+
+video: out enlarge-image
 	ffmpeg -y -framerate 5 -i out/img-%03d.png -vcodec libx264 -vf format=yuv420p video.mp4
 	rm -f out/*.png >/dev/null
