@@ -9,6 +9,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#ifndef CONWAY_LINKED_LIST
+#define CONWAY_LINKED_LIST
+
 typedef struct linked_cell linked_cell;
 typedef linked_cell *linked_list;
 
@@ -56,3 +59,5 @@ void linked_list_delete(linked_list *p_list, int idx);
  * @param list
  */
 void linked_list_free(linked_list list);
+
+#endif

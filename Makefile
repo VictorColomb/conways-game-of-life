@@ -47,42 +47,46 @@ check-syntax: naive_universe.o test-naive-universe.o naive_loader.o test-naive-l
 
 # Application building rules
 test-naive-universe: test-naive-universe.o naive_universe.o
-	$(CC) $(CFLAGS) -o $@ test-naive-universe.o naive_universe.o
+	$(CC) $(CFLAGS) -o $@ $^
 test-naive-loader: test-naive-loader.o naive_universe.o naive_loader.o
-	$(CC) $(CFLAGS) -o $@ test-naive-loader.o naive_universe.o naive_loader.o
+	$(CC) $(CFLAGS) -o $@ $^
 app-naive-loader: app-naive-loader.o naive_universe.o naive_loader.o
-	$(CC) $(CFLAGS) -o $@ app-naive-loader.o naive_universe.o naive_loader.o
+	$(CC) $(CFLAGS) -o $@ $^
 test-naive-conway: test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_pbm_writer.o
-	$(CC) $(CFLAGS) -o $@ test-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_pbm_writer.o
+	$(CC) $(CFLAGS) -o $@ $^
 app-naive-conway: app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o naive_pbm_writer.o
-	$(CC) $(CFLAGS) -o $@ app-naive-conway.o naive_universe.o naive_loader.o naive_conway.o naive_optionsparser.o naive_pbm_writer.o
+	$(CC) $(CFLAGS) -o $@ $^
 test-naive-generate-image: test-naive-generate-image.o naive_universe.o naive_loader.o naive_pbm_writer.o
-	$(CC) $(CFLAGS) -o $@ test-naive-generate-image.o naive_universe.o naive_loader.o naive_pbm_writer.o
+	$(CC) $(CFLAGS) -o $@ $^
 test-list-universe: test-list-universe.o linked_list_cell.o list_universe.o
-	$(CC) $(CFLAGS) -o $@ test-list-universe.o linked_list_cell.o list_universe.o
+	$(CC) $(CFLAGS) -o $@ $^
+test-list-loader: test-list-loader.o linked_list_cell.o list_universe.o list_loader.o
+	$(CC) $(CFLAGS) -o $@ $^
 
 # Build and run
 run-%: %
+	clear
 	./$* $(ARGS)
 
 valgrind-%: %
+	clear
 	valgrind --leak-check=full ./$* $(ARGS)
 
 
 # USER RULES
 all: doc app-naive-loader app-naive-conway clean
 
-compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image test-list-universe
+compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image test-list-universe test-list-loader
 
 naive: app-naive-loader app-naive-conway clean
 
 naive-compile-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image
 
-linkedlist-compile-all: test-list-universe
+linkedlist-compile-all: test-list-universe test-list-loader
 
 
 # TESTS
-ALL_TESTS = test-naive-universe test-naive-loader test-naive-conway test-naive-generate-image test-list-universe
+ALL_TESTS = test-naive-universe test-naive-loader test-naive-conway test-naive-generate-image test-list-universe test-list-loader
 
 launch-tests: $(ALL_TESTS)
 	for x in $(ALL_TESTS); do ./$$x --all; done
