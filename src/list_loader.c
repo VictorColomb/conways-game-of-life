@@ -1,7 +1,7 @@
 /**
  * @file list_loader.c
  * @author Victor Colomb (vic.col@hotmail.fr)
- * @brief Source file for a naive implementation of Conway's game of life loader.
+ * @brief Source code for a naive implementation of Conway's game of life loader.
  * @date 2021-03-13
  */
 
@@ -9,6 +9,7 @@
 
 universe list_conway_load(char *filename)
 {
+  // open file
   FILE *p_file;
   p_file = fopen(filename, "r");
 
@@ -16,8 +17,15 @@ universe list_conway_load(char *filename)
   int height;
   int nb_step;
 
-  fscanf(p_file, "%d %d", &width, &height);
-  fscanf(p_file, "%d\n", &nb_step);
+  // get width, height and number of steps
+  int fscanf_result = fscanf(p_file, "%d %d", &width, &height);
+  fscanf_result += fscanf(p_file, "%d\n", &nb_step);
+
+  if (fscanf_result != 3)
+  {
+    fprintf(stderr, "[!] File not properly formatted !\n");
+    exit(EXIT_FAILURE);
+  }
 
   linked_list cells = NULL;
   linked_list current_cell = cells;
@@ -25,6 +33,7 @@ universe list_conway_load(char *filename)
 
   for (int i = 0; i < height; ++i)
   {
+    // read and process one line from the file
     fgets(buffer, width + 2, p_file);
 
     for (int j = 0; j < width; ++j)
@@ -32,6 +41,7 @@ universe list_conway_load(char *filename)
       if (buffer[j] == 'o')
       {
         if (cells == NULL)
+        // if the list is empty
         {
           cells = malloc(sizeof(linked_cell));
           cells->row = i;

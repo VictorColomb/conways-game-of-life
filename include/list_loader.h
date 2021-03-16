@@ -6,6 +6,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "linked_list_cell.h"
 #include "list_universe.h"

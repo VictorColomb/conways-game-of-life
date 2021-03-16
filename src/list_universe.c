@@ -1,7 +1,7 @@
 /**
  * @file list_universe.c
  * @author Victor Colomb (vic.col@hotmail.fr)
- * @brief Source file for a naive implementation of Conway's game of life universe structure
+ * @brief Source code for a naive implementation of Conway's game of life universe structure
  * @date 2021-03-09
  */
 
