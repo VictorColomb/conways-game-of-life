@@ -30,7 +30,6 @@ void test_linkedlist_insert()
   linked_list_insert(&list, 0, 0);
   linked_list_insert(&list, 1, 8);
 
-
   int row[] = {0, 1, 1, 2, 5, 5, 5};
   int column[] = {0, 0, 8, 7, 1, 3, 6};
 
@@ -47,7 +46,7 @@ void test_linkedlist_insert()
 
 void test_linkedlist_delete()
 {
-  printf("  | testing linked_list_delete...\n");
+  printf("  | testing linked_list_delete...");
 
   linked_list_delete(&list, 1, 8);
   linked_list_delete(&list, 0, 0);

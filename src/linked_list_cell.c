@@ -25,7 +25,7 @@ linked_cell linked_list_get(linked_list list, int idx)
 
 bool linked_cell_smaller(linked_list cell1, linked_list cell2)
 {
-  return (cell1->row < cell2->row) || (cell1->row == cell2->row && cell1->column < cell2->column);
+  return (cell1->row < cell2->row) || (cell1->row == cell2->row && cell1->column <= cell2->column);
 }
 
 void linked_list_insert_unsorted(linked_list *p_list, int row, int column)
@@ -64,6 +64,12 @@ void linked_list_insert(linked_list *p_list, int row, int column)
   {
     if (current_cell->next == NULL)
     {
+      if (current_cell->row == row && current_cell->column == column)
+      {
+        free(new_cell);
+        return;
+      }
+
       new_cell->next = NULL;
       current_cell->next = new_cell;
       return;
@@ -97,9 +103,11 @@ void linked_list_insert(linked_list *p_list, int row, int column)
 
 void linked_list_delete(linked_list *p_list, int row, int column)
 {
+  // if list empty
   if (*p_list == NULL)
     return;
 
+  // if the first cell is to be deleted
   if ((*p_list)->row == row && (*p_list)->column == column)
   {
     linked_list delete = *p_list;
@@ -110,22 +118,26 @@ void linked_list_delete(linked_list *p_list, int row, int column)
   }
 
   linked_list current_cell = *p_list;
+  linked_list previous_cell = NULL;
 
-  while (current_cell->row != row && current_cell->column != column)
+  while (current_cell->row != row || current_cell->column != column)
   {
+    previous_cell = current_cell;
     current_cell = current_cell->next;
 
     if (current_cell == NULL)
       return;
   }
 
-  linked_list deleted_cell = current_cell->next;
-  current_cell->next = current_cell->next->next;
-  free(deleted_cell);
+  previous_cell->next = current_cell->next;
+  free(current_cell);
 }
 
 void linked_list_free(linked_list list)
 {
+  if (list == NULL)
+    return;
+
   linked_list next_list = list->next;
   free(list);
 

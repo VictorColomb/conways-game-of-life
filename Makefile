@@ -64,6 +64,8 @@ test-list-loader: test-list-loader.o linked_list_cell.o list_universe.o list_loa
 	$(CC) $(CFLAGS) -o $@ $^
 app-list-loader: app-list-loader.o list_universe.o list_loader.o linked_list_cell.o
 	$(CC) $(CFLAGS) -o $@ $^
+test-list-conway: test-list-conway.o linked_list_cell.o list_universe.o list_loader.o list_conway.o
+	$(CC) $(CFLAGS) -o $@ $^
 
 # Build and run
 run-%:
@@ -74,7 +76,7 @@ run-%:
 valgrind-%:
 	clear
 	make $*
-	valgrind --leak-check=full ./$* $(ARGS)
+	valgrind --leak-check=full --show-leak-kinds=all ./$* $(ARGS)
 
 
 # USER RULES
