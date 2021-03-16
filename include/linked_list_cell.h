@@ -35,6 +35,15 @@ struct linked_cell
 linked_cell linked_list_get(linked_list list, int idx);
 
 /**
+ * @brief Insert an element into a linked list, at the first position
+ *
+ * @param p_list pointer to a linked list
+ * @param row
+ * @param column
+ */
+void linked_list_insert_unsorted(linked_list *p_list, int row, int column);
+
+/**
  * @brief Insert an element into a linked list, sorted by row and column
  *
  * @param p_list pointer to a linked list
@@ -51,7 +60,7 @@ void linked_list_insert(linked_list *p_list, int row, int column);
  *
  * @pre `idx` has to be inferior to the number of cells in the list
  */
-void linked_list_delete(linked_list *p_list, int idx);
+void linked_list_delete(linked_list *p_list, int row, int column);
 
 /**
  * @brief Free a linked list from memory

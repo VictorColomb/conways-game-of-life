@@ -2,7 +2,6 @@
  * @file naive_conway.h
  * @author Victor Colomb (vic.col@hotmail.fr)
  * @brief Header file for a naive implementation of Conway's game of life simulation
- * @version 0.1
  * @date 2021-02-22
  *
  * Naive implementation of the Conway's game of life: \n

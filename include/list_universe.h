@@ -70,6 +70,6 @@ void print_list_universe(universe u);
  *
  * @param u universe
  */
-void prettyprint_naive_universe(universe u);
+void prettyprint_list_universe(universe u);
 
 #endif

@@ -80,7 +80,7 @@ void print_list_universe(universe u)
   print_list_cells(u);
 }
 
-void prettyprint_naive_universe(universe u)
+void prettyprint_list_universe(universe u)
 {
   printf("Universe width:  %d\nUniverse height: %d\nNumber of steps: %d\n\nUniverse cells state:\n=====================\n\n", u.width, u.height, u.step_nb);
   print_list_cells(u);

@@ -28,6 +28,16 @@ bool linked_cell_smaller(linked_list cell1, linked_list cell2)
   return (cell1->row < cell2->row) || (cell1->row == cell2->row && cell1->column < cell2->column);
 }
 
+void linked_list_insert_unsorted(linked_list *p_list, int row, int column)
+{
+  linked_list new_cell = malloc(sizeof(linked_cell));
+  new_cell->row = row;
+  new_cell->column = column;
+  new_cell->next = *p_list;
+
+  *p_list = new_cell;
+}
+
 void linked_list_insert(linked_list *p_list, int row, int column)
 {
   // if list empty, create a single cell one
@@ -85,30 +95,33 @@ void linked_list_insert(linked_list *p_list, int row, int column)
   previous_cell->next = new_cell;
 }
 
-void linked_list_delete(linked_list *p_list, int idx)
+void linked_list_delete(linked_list *p_list, int row, int column)
 {
-  linked_list current_cell = *p_list;
+  if (*p_list == NULL)
+    return;
 
-  if (idx == 0)
+  if ((*p_list)->row == row && (*p_list)->column == column)
   {
-    *p_list = current_cell->next;
-    free(current_cell);
+    linked_list delete = *p_list;
+    *p_list = delete->next;
+
+    free(delete);
+    return;
   }
 
-  for (int i = 0; i < idx - 1; ++i)
+  linked_list current_cell = *p_list;
+
+  while (current_cell->row != row && current_cell->column != column)
   {
     current_cell = current_cell->next;
 
     if (current_cell == NULL)
-    {
-      fprintf(stderr, "[!] Linked list get failed, index out of bounds.\n");
-      exit(EXIT_FAILURE);
-    }
+      return;
   }
 
-  linked_list delete_list = current_cell->next;
-  current_cell->next = delete_list->next;
-  free(delete_list);
+  linked_list deleted_cell = current_cell->next;
+  current_cell->next = current_cell->next->next;
+  free(deleted_cell);
 }
 
 void linked_list_free(linked_list list)

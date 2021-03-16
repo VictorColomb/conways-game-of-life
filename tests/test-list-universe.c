@@ -45,6 +45,29 @@ void test_linkedlist_insert()
   printf(" OK!\n");
 }
 
+void test_linkedlist_delete()
+{
+  printf("  | testing linked_list_delete...\n");
+
+  linked_list_delete(&list, 1, 8);
+  linked_list_delete(&list, 0, 0);
+
+  int row[] = {1, 2, 5, 5, 5};
+  int column[] = {0, 7, 1, 3, 6};
+
+  linked_list current_cell = list;
+  for (int k = 0; k < 5; ++k)
+  {
+    assert(current_cell->row == row[k] && current_cell->column == column[k]);
+    current_cell = current_cell->next;
+  }
+
+  assert(current_cell == NULL);
+
+  linked_list_insert(&list, 0, 0);
+  printf(" OK!\n");
+}
+
 /**
  * @brief Test of the `list_universe_get_cell` function
  *
@@ -56,7 +79,7 @@ void test_universe_getcell()
 
   assert(list_universe_get_cell(u, 0, 0));
   assert(list_universe_get_cell(u, 2, 7));
-  assert(list_universe_get_cell(u, 1, 8));
+  assert(list_universe_get_cell(u, 1, 0));
   assert(list_universe_get_cell(u, 5, 6));
 
   assert(!list_universe_get_cell(u, 0, 1));
@@ -81,6 +104,7 @@ int main(void)
   printf("* Starting linked list implementation tests...\n");
 
   test_linkedlist_insert();
+  test_linkedlist_delete();
 
   printf("  +-> OK!\n* Starting list universe structure tests...\n");
 

@@ -43,7 +43,7 @@ clean-all:
 
 
 # Syntax check (put all .o files as prerequisites here)
-check-syntax: naive_universe.o test-naive-universe.o naive_loader.o test-naive-loader.o app-naive-loader.o naive_conway.o test-naive-conway.o app-naive-conway.o naive_ppm_writer.o test-naive-generate-image.o
+check-syntax: naive_universe.o test-naive-universe.o naive_loader.o test-naive-loader.o app-naive-loader.o naive_conway.o test-naive-conway.o app-naive-conway.o naive_ppm_writer.o test-naive-generate-image.o linked_list_cell.o list_universe.o test-list-universe.o list_loader.o test-list-loader.o app-list-loader.o
 
 # Application building rules
 test-naive-universe: test-naive-universe.o naive_universe.o
@@ -62,27 +62,33 @@ test-list-universe: test-list-universe.o linked_list_cell.o list_universe.o
 	$(CC) $(CFLAGS) -o $@ $^
 test-list-loader: test-list-loader.o linked_list_cell.o list_universe.o list_loader.o
 	$(CC) $(CFLAGS) -o $@ $^
+app-list-loader: app-list-loader.o list_universe.o list_loader.o linked_list_cell.o
+	$(CC) $(CFLAGS) -o $@ $^
 
 # Build and run
-run-%: %
+run-%:
 	clear
+	make $*
 	./$* $(ARGS)
 
-valgrind-%: %
+valgrind-%:
 	clear
+	make $*
 	valgrind --leak-check=full ./$* $(ARGS)
 
 
 # USER RULES
 all: doc app-naive-loader app-naive-conway clean
 
-compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image test-list-universe test-list-loader
+compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image test-list-universe test-list-loader app-list-loader
 
 naive: app-naive-loader app-naive-conway clean
 
 naive-compile-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image
 
-linkedlist-compile-all: test-list-universe test-list-loader
+linkedlist: app-list-loader clean
+
+linkedlist-compile-all: test-list-universe test-list-loader app-list-loader
 
 
 # TESTS
