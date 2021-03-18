@@ -1,8 +1,8 @@
 /**
- * @file list_conway.h
+ * @file list_conway_expandable.h
  * @author Victor Colomb (vic.col@hotmail.fr)
- * @brief Header file for a linked list implementation of Conway's game of life simulation
- * @date 2021-03-15
+ * @brief Header file for an expandable linked list implementation of Conway's game of life simulation
+ * @date 2021-03-16
  */
 
 #include <stdbool.h>
@@ -20,7 +20,7 @@
  *
  * @return linked_list of neighbors
  */
-linked_list list_neighbors(universe u, int row, int column, bool consider_torus);
+linked_list list_neighbors_expandable(universe u, int row, int column);
 
 /**
  * @brief Count alive neighbors of a cell in a given universe.
@@ -32,7 +32,15 @@ linked_list list_neighbors(universe u, int row, int column, bool consider_torus)
  *
  * @return number of alive neighbors of the given cell
  */
-int list_count_neighbors(universe u, int row, int column, bool consider_torus);
+int list_count_neighbors_expandable(universe u, int row, int column);
+
+/**
+ * @brief Recenter a universe (move to all positive, increase height and width if needed)
+ *
+ * @param u universe
+ * @return recentered universe
+ */
+universe recenter_universe(universe u);
 
 /**
  * @brief Get a naive universe's next iteration. \n
@@ -43,7 +51,7 @@ int list_count_neighbors(universe u, int row, int column, bool consider_torus);
  *
  * @return the given universe's next iteration
  */
-universe list_step(universe u, bool consider_torus);
+universe list_step_expandable(universe u);
 
 /**
  * @brief Get the final state of a universe, according to its `step_nb` parameter.
@@ -55,4 +63,4 @@ universe list_step(universe u, bool consider_torus);
  *
  * @return the universe's final state
  */
-universe list_simulation(universe u, bool print_to_console, bool generate_images, bool consider_torus);
+universe list_simulation_expandable(universe u, bool print_to_console, bool generate_images);

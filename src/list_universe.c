@@ -14,9 +14,10 @@ bool list_universe_get_cell(universe u, int row, int column)
   while (current_cell != NULL)
   {
     if (current_cell->row == row && current_cell->column == column)
-    {
       return true;
-    }
+
+    if (current_cell->row > row || (current_cell->row == row && current_cell->column > column))
+      return false;
 
     current_cell = current_cell->next;
   }
@@ -45,9 +46,7 @@ void print_list_cells(universe u)
 
     // print beginning of next cell line
     for (; column < current_cell->column; ++column)
-    {
       printf(".");
-    }
 
     printf("o");
 

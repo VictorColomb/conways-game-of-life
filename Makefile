@@ -43,7 +43,7 @@ clean-all:
 
 
 # Syntax check (put all .o files as prerequisites here)
-check-syntax: naive_universe.o test-naive-universe.o naive_loader.o test-naive-loader.o app-naive-loader.o naive_conway.o test-naive-conway.o app-naive-conway.o naive_ppm_writer.o test-naive-generate-image.o linked_list_cell.o list_universe.o test-list-universe.o list_loader.o test-list-loader.o app-list-loader.o
+check-syntax: naive_universe.o test-naive-universe.o naive_loader.o test-naive-loader.o app-naive-loader.o naive_conway.o test-naive-conway.o app-naive-conway.o naive_ppm_writer.o test-naive-generate-image.o linked_list_cell.o list_universe.o test-list-universe.o list_loader.o test-list-loader.o app-list-loader.o list_conway.o test-list-conway.o list_conway_expandable.o list_optionsparser.o app-naive-conway.o
 
 # Application building rules
 test-naive-universe: test-naive-universe.o naive_universe.o
@@ -66,6 +66,10 @@ app-list-loader: app-list-loader.o list_universe.o list_loader.o linked_list_cel
 	$(CC) $(CFLAGS) -o $@ $^
 test-list-conway: test-list-conway.o linked_list_cell.o list_universe.o list_loader.o list_conway.o
 	$(CC) $(CFLAGS) -o $@ $^
+app-list-conway: app-list-conway.o list_optionsparser.o list_conway.o list_conway_expandable.o list_loader.o list_universe.o linked_list_cell.o list_pbm_writer.o
+	$(CC) $(CFLAGS) -o $@ $^
+test-list-generate-image: test-list-generate-image.o linked_list_cell.o list_universe.o list_loader.o list_pbm_writer.o
+	$(CC) $(CFLAGS) -o $@ $^
 
 # Build and run
 run-%:
@@ -80,21 +84,21 @@ valgrind-%:
 
 
 # USER RULES
-all: doc app-naive-loader app-naive-conway clean
+all: doc app-naive-loader app-naive-conway app-list-loader app-list-conway clean
 
-compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image test-list-universe test-list-loader app-list-loader
+compile-all: doc test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image test-list-universe test-list-loader app-list-loader test-list-conway app-list-conway
 
 naive: app-naive-loader app-naive-conway clean
 
 naive-compile-all: test-naive-universe test-naive-loader app-naive-loader test-naive-conway app-naive-conway test-naive-generate-image
 
-linkedlist: app-list-loader clean
+linkedlist: app-list-loader app-list-conway clean
 
-linkedlist-compile-all: test-list-universe test-list-loader app-list-loader
+linkedlist-compile-all: test-list-universe test-list-loader app-list-loader test-list-conway app-list-conway
 
 
 # TESTS
-ALL_TESTS = test-naive-universe test-naive-loader test-naive-conway test-naive-generate-image test-list-universe test-list-loader
+ALL_TESTS = test-naive-universe test-naive-loader test-naive-conway test-naive-generate-image test-list-universe test-list-loader test-list-conway
 
 launch-tests: $(ALL_TESTS)
 	for x in $(ALL_TESTS); do ./$$x --all; done
@@ -105,7 +109,7 @@ WIDTH=1024
 HEIGHT=768
 
 enlarge-image: out
-	mogrify -format png -background white -scale $(WIDTH)X$(HEIGHT)\! -gravity center out/*.p*m
+	mogrify -format png -background white -scale $(WIDTH)X$(HEIGHT) -filter box -extent $(WIDTH)X$(HEIGHT) -gravity center out/*.p*m
 
 video: out enlarge-image
 	ffmpeg -y -framerate 5 -i out/img-%03d.png -vcodec libx264 -vf format=yuv420p video.mp4

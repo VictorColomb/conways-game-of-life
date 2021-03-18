@@ -1,18 +1,19 @@
 /**
- * @file naive_optionsparser.c
+ * @file list_optionsparser.c
  * @author your name (you@domain.com)
- * @brief Source file for an options parser for a naive implementation of Conway's game of life
- * @date 2021-03-02
+ * @brief Source file for an options parser for a linked list implementation of Conway's game of life
+ * @date 2021-03-16
  */
 
-#include "naive_optionsparser.h"
+#include "list_optionsparser.h"
 
-naive_options naive_default_options()
+list_options list_default_options()
 {
-  naive_options defaults;
+  list_options defaults;
 
   defaults.consider_torus = false;
   defaults.generate_images = false;
+  defaults.expandable = false;
   defaults.print_formatting_help = false;
   defaults.print_to_console = false;
 
@@ -21,7 +22,7 @@ naive_options naive_default_options()
 
 void print_usage(char *exec_name)
 {
-  fprintf(stderr, "USAGE: %s [-ipt?] filename\n\nOptions:\n  -i: generate image output for each step\n  -p: print simulation steps to console\n  -t: consider the universe as a torus\n  -?: print source textfile formatting help\n  filename: source textfile to load universe from\n", exec_name);
+  fprintf(stderr, "USAGE: %s [-ipte?] filename\n\nOptions:\n  -i: generate image output for each step\n  -p: print simulation steps to console\n  -t: consider the universe as a torus\n  -e: consider the universe as expandable (incompatible with a torus universe!)\n  -?: print source textfile formatting help\n  filename: source textfile to load universe from\n", exec_name);
   exit(EXIT_FAILURE);
 }
 
@@ -31,9 +32,9 @@ void do_print_formatting_help()
   exit(EXIT_SUCCESS);
 }
 
-naive_options parse_options(int argc, char **argv)
+list_options parse_options(int argc, char **argv)
 {
-  naive_options options = naive_default_options();
+  list_options options = list_default_options();
 
   // go through all keyword options (options starting with with -)
   int opt_idx;
@@ -57,6 +58,9 @@ naive_options parse_options(int argc, char **argv)
       case 't':
         options.consider_torus = true;
         break;
+      case 'e':
+        options.expandable = true;
+        break;
       default:
         print_usage(argv[0]);
       }
@@ -64,6 +68,12 @@ naive_options parse_options(int argc, char **argv)
       ++idx;
       opt = argv[opt_idx][idx];
     }
+  }
+
+  if (options.consider_torus && options.expandable)
+  {
+    fprintf(stderr, "[!] An expandable universe cannot be expandable\n\n");
+    print_usage(argv[0]);
   }
 
   // here, argv[opt_idx] points to the first positional argument, which should be the filename
