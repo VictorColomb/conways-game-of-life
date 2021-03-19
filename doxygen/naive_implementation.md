@@ -1,3 +1,4 @@
+
 # Naive Implementation Documentation {#naive_implementation}
 
 The naive implementation of Conway's game of life uses a string to store the state of the universe's state, using the following convention:

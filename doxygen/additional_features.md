@@ -2,8 +2,8 @@
 
 ## Options parser
 
-The `app-naive-conway` application features a standard options parser. \n
-It is developped in naive_optionsparser.h and naive_optionsparser.c and used in app-naive-conway.c.
+The `app-naive-conway` and `app-list-conway` application features a standard options parser. \n
+It is developped in naive_optionsparser.h / list_optionsparser.h and naive_optionsparser.c / list_optionsparser.c and used in app-naive-conway.c / app-list-conway.c.
 
 The implemented options are:
 
@@ -14,7 +14,13 @@ The implemented options are:
 -?: print source textfile formatting help
 ```
 
-and are stored in a \ref naive_options structure.
+For `app-list-conway` is also available:
+
+```batch
+  -e: consider the universe as expandable (incompatible with a torus universe!)
+```
+
+and are stored in a \ref naive_options or \ref list_options structure.
 
 The options parser will analyse all command-line arguments until one without a preceding dash (`-`) is found. It will then scan all characters following the dash and apply them to their corresponding options, or crash the program if they don't match a known option. \n
 This means that the option sets `-pt` and `-t -p` are equivalent.
@@ -23,7 +29,7 @@ The first positional argument (the first argument withtout a leading dash) will 
 
 ## Possibility to consider the universe as a torus
 
-The `-t` option in `app-naive-conway` makes the simulator consider the universe as a torus, meaning that the alive neighbor count for an edging cell will include alive cells on the opposite edge of the universe.
+The `-t` option in `app-naive-conway` and `app-list-conway` makes the simulator consider the universe as a torus, meaning that the alive neighbor count for an edging cell will include alive cells on the opposite edge of the universe.
 
 In the following examples, if the universe is considered as a torus, the cells at (0,0), marked `x`, have one neighbor:
 
@@ -34,6 +40,12 @@ x..     x..     x.o     x..
 ...     ..o     ...     ...
 ..o     ...     ...     o..
 ```
+
+## Possibility to consider the universe as expandable
+
+The `-e` options in `app-list-conway` makes the simulator consider the universe as expandable.
+
+This option is incompatible with the aforementionned option to consider the universe as a torus.
 
 ## Usage of the PBM ASCII image standard
 
