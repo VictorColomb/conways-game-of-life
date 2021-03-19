@@ -69,20 +69,53 @@ $(function() {
 Compile and launch all tests using <code>make launch-tests</code>.</p>
 <h2>Tests for the naive implementation</h2>
 <h3>Naive universe structure</h3>
+<p><a class="el" href="test-naive-universe_8c.html" title="Test executable source code for a naive implementation of Conway&#39;s game of life universe structure...">test-naive-universe.c</a></p>
 <ul>
 <li><code>naive_universe_get_cell</code>: the test creates a universe from a string constant and checks that the function applied to three different cells returns the correct character.</li>
 <li><code>naive_universe_print</code>: the test prints a universe to the console, the user has to verify that the printing is correct.</li>
 <li><code>naive_update_cell</code>: the test updates a cell of a universe and verifies the new string.</li>
 </ul>
 <h3>Naive loader</h3>
+<p><a class="el" href="test-naive-loader_8c.html" title="Test executable source code for a linked list implementation of Conway&#39;s game of life loader...">test-naive-loader.c</a></p>
 <ul>
 <li><code>naive_conway_load</code>: the test will attempt to load the universe from <code>data/glider.txt</code> and will check that the parameters of the returned structure are correct.</li>
 </ul>
 <h3>Naive universe simulator</h3>
+<p><a class="el" href="test-naive-conway_8c.html" title="Test executable source code for a naive implementation of Conway&#39;s game of life universe simulator...">test-naive-conway.c</a></p>
 <ul>
-<li><code>naive_count_neighbor</code>: the test loads the universe from <code>data/glider.txt</code> and checks several neighbor counts with and without considering the universe as a torus.</li>
-<li><code>naive_step</code>: the test uses the <code>data/archive-test</code> directory that contains 512 source textfiles and their next step solution. <br />
- It will load each universe from its corresponding file, use the <code>naive_step</code> function and compare the return's cell table with the given exact solution. </li>
+<li><code>naive_count_neighbor</code>: the test will load the universe from <code>data/glider.txt</code> and checks several neighbor counts with and without considering the universe as a torus.</li>
+<li><code>naive_step</code>: the test will use the <code>data/archive-test</code> directory that contains 512 source textfiles and their next step solution. <br />
+ It will load each universe from its corresponding file, use the <code>naive_step</code> function and compare the return's cell table with the given exact solution.</li>
+</ul>
+<h3>Naive PBM image generator</h3>
+<p><a class="el" href="test-naive-generate-image_8c.html" title="Test executble source code for a naive implementation of Conway&#39;s game of life image printer...">test-naive-generate-image.c</a></p>
+<ul>
+<li><code>naive_pgm_generate</code>: the test will load <code>data/glider.txt</code> universe and generate the associated image.</li>
+</ul>
+<h2>Tests for the linked list implementation</h2>
+<h3>Linked list implementation and list universe structure</h3>
+<p><a class="el" href="test-list-universe_8c.html" title="Test executable source code for a linked list implementation of Conway&#39;s game of life universe struct...">test-list-universe.c</a></p>
+<ul>
+<li><code>linked_list_insert</code>: the test will create a list using the function and check each cell's elements against a hardcoded list.</li>
+<li><code>linked_universe_get_cell</code>: the test will use the previously generated list to test a series of cells using the function.</li>
+<li><code>print_list_cell</code>: the test prints a universe to the console, the user has to verify that the printing is correct.</li>
+</ul>
+<h3>List loader structure</h3>
+<p>test-list-loader.c</p>
+<ul>
+<li><code>list_conway_load</code>: the test will attempt to load the universe from <code>data/glider.txt</code> and will check that the parameters of the returned structure are correct.</li>
+</ul>
+<h3>List universe simulator</h3>
+<p><a class="el" href="test-list-conway_8c.html" title="Test executable source code for a linked list implementation of Conway&#39;s game of life universe simula...">test-list-conway.c</a></p>
+<ul>
+<li><code>list_count_neighbor</code>: the test will load the universe from <code>data/glider.txt</code> and checks several neighbor counts with and without considering the universe as a torus.</li>
+<li><code>list_step</code>: the test will use the <code>data/archive-test</code> directory that contains 512 source textfiles and their next step solution. <br />
+ It will load each universe from its corresponding file, use the <code>list_step</code> function and compare the return's cell table with the given exact solution.</li>
+</ul>
+<h3>List universe PBM image generator</h3>
+<p><a class="el" href="test-list-generate-image_8c.html" title="Test executble source code for a linked list implementation of Conway&#39;s game of life image printer...">test-list-generate-image.c</a></p>
+<ul>
+<li><code>list_pgm_generate</code>: the test will load <code>data/glider.txt</code> universe and generate the associated image. </li>
 </ul>
 </div></div><!-- contents -->
 <!-- start footer part -->

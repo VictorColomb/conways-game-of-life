@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['naive_5foptions',['naive_options',['../structnaive__options.html',1,'']]]
+  ['linked_5fcell',['linked_cell',['../structlinked__cell.html',1,'']]],
+  ['list_5foptions',['list_options',['../structlist__options.html',1,'']]]
 ];

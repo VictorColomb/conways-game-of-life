@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['universe',['universe',['../structuniverse.html',1,'']]]
+  ['naive_5foptions',['naive_options',['../structnaive__options.html',1,'']]]
 ];

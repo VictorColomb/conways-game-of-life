@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tests_20documentation',['Tests Documentation',['../tests.html',1,'']]]
+  ['naive_20implementation_20documentation',['Naive Implementation Documentation',['../naive_implementation.html',1,'']]]
 ];

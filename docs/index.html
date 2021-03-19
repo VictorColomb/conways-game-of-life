@@ -74,14 +74,16 @@ $(function() {
 <li>An alive cell will become dead in the next step of it has less than one or more than four (both included) alive neighbors</li>
 </ul>
 <p>Neighbors are the eight surrounding cells (vertically, horizontally and diagonally).</p>
-<p>We provide a naive implementation for the simulation universe using a string to store the universe cells (see detailed information <a class="el" href="naive_implementation.html">here</a>).</p>
+<p>We provide a naive implementation for the simulation universe using a string to store the universe cells (see detailed information <a class="el" href="naive_implementation.html">here</a>) as well as a linked list implementation featuring an option for the universe to be expandable (see detailed information <a class="el" href="linkedlist_implementation.html">here</a>).</p>
 <h2>Installation</h2>
 <p>In the terminal:</p>
 <ul>
 <li>To compile a user-ready solution, use <code>make</code></li>
 <li>To compile a user-ready solution of the naive implementation, use <code>make naive</code></li>
+<li>To compile a user-ready solution of the linked list implementation, use <code>make linkedlist</code></li>
 <li>To compile all executables, including tests, use <code>make compile-all</code></li>
 <li>To compile all executables of the naive implementation, including tests, use <code>make naive-compile-all</code></li>
+<li>To compile all executables of the linked list implementation, including tests, use <code>make linkedlist-compile-all</code></li>
 </ul>
 <h2>Usage</h2>
 <h3>Source textfiles</h3>
@@ -90,20 +92,30 @@ $(function() {
 <p>Here's an example for a <code>3x4</code> universe:</p>
 <div class="fragment"><div class="line">3 4</div><div class="line">3</div><div class="line">.o..</div><div class="line">..o.</div><div class="line">ooo.</div></div><!-- fragment --><h3>Command-line usage</h3>
 <ul>
-<li><code>app-naive-loader</code> to load a universe from a source textfile and print it as is to the console.</li>
+<li><code>app-naive-loader</code> to load a universe from a source textfile and print it as is to the console, using the naive implementation.</li>
 </ul>
 <div class="fragment"><div class="line">./app-naive-loader filename</div><div class="line"></div><div class="line">Options:</div><div class="line">  filename: source textfile (see formatting above)</div></div><!-- fragment --><ul>
-<li><code>app-naive-conway</code> to load a universe from a source textfile and execute the given amount of simulation steps</li>
+<li><code>app-naive-conway</code> to load a universe from a source textfile and simulate the given amount of steps, using the naive implementation.</li>
 </ul>
-<div class="fragment"><div class="line">./app-naive-conway [-ipt?] filename</div><div class="line"></div><div class="line">Options:</div><div class="line">  -i: generate image output for each step</div><div class="line">  -p: print simulation steps to the console</div><div class="line">  -t: consider the universe as a torus</div><div class="line">  -?: print source textfile formatting help</div><div class="line">  filename: source textfile to load the universe from</div></div><!-- fragment --><h2>Tests</h2>
+<div class="fragment"><div class="line">./app-naive-conway [-ipt?] filename</div><div class="line"></div><div class="line">Options:</div><div class="line">  -i: generate image output for each step</div><div class="line">  -p: print simulation steps to the console</div><div class="line">  -t: consider the universe as a torus</div><div class="line">  -?: print source textfile formatting help</div><div class="line">  filename: source textfile to load the universe from</div></div><!-- fragment --><ul>
+<li><code>app-list-loader</code> to load a universe from a source textfile and print it as is to the console, using the linked list implementation.</li>
+</ul>
+<div class="fragment"><div class="line">./app-list-loader filename</div><div class="line"></div><div class="line">Options:</div><div class="line">  filemane: source textfile</div></div><!-- fragment --><ul>
+<li><code>app-list-conway</code> to load a universe from a source textfile and simulate the given amount of steps, using the linked list implementation.</li>
+</ul>
+<div class="fragment"><div class="line">./app-list-conway [-ipte?] filename</div><div class="line"></div><div class="line">Options:</div><div class="line">  -i: generate image output for each step</div><div class="line">  -p: print simulation steps to the console</div><div class="line">  -t: consider the universe as a torus</div><div class="line">  -e: consider the universe as expandable (incompatible with a torus universe!)</div><div class="line">  -?: print source textfile formatting help</div><div class="line">  filename: source textfile to load the universe from</div></div><!-- fragment --><h3>Build and run</h3>
+<p>Use <code>make run-&lt;app_name&gt; [ARGS=""]</code> to build and run an executable (<code>make run-test-naive-conway</code> or <code>make run app-list-conway ARGS="-i file.txt"</code> for example).</p>
+<p>Use <code>make valgrind-&lt;app_name&gt; [ARGS=""]</code> to build and run an executable under the <code>valgrind</code> tool.</p>
+<h2>Tests</h2>
 <p>We provide a series of tests to verify that all the provided function work properly. <br />
 Use <code>make launch-test</code> to execute them all.</p>
 <p>See detailed information on the related page <a class="el" href="tests.html">here</a>.</p>
 <h2>Additional features</h2>
 <p>See detailed information on the related page <a class="el" href="additional_features.html">here</a>.</p>
 <ul>
-<li>Options parser for <code>app-naive-conway</code></li>
-<li>Possibility to consider the universe as a torus</li>
+<li>Options parser for <code>app-naive-conway</code> and <code>app-list-conway</code></li>
+<li>Possibility to consider the universe as a torus for both the naive and linked list implementation</li>
+<li>Possibility to consider the universe as expandable for the linked list implementation.</li>
 <li>Decided to use PBM standard for the output images instead of the PPM standard. </li>
 </ul>
 </div></div><!-- contents -->
