@@ -1,9 +1,5 @@
 # Conway's Game of Life Documentation
 
-__Author:__ Victor Colomb (vic.col@hotmail.fr)
-
-See source code [here](https://github.com/viccol961/IN101_project).
-
 ## General
 
 Conway's game of life follows the following rules:
@@ -32,7 +28,7 @@ In the terminal:
 
 Universes are loaded from text files formatted as follows:
 
-```text
+```none
 width height
 number_of_steps
 universe_cells_state
@@ -42,7 +38,7 @@ where universe cells follow the convention `.` for a dead cell and `o` for a liv
 
 Here's an example for a `3x4` universe:
 
-```text
+```none
 3 4
 3
 .o..
